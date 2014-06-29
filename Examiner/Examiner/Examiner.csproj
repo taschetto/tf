@@ -61,6 +61,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Models\Alternative.cs" />
+    <Compile Include="Business\Models\Answer.cs" />
+    <Compile Include="Business\Models\BaseModel.cs" />
+    <Compile Include="Business\Models\Category.cs" />
+    <Compile Include="Business\Models\Exam.cs" />
+    <Compile Include="Business\Models\Question.cs" />
+    <Compile Include="Business\Models\Student.cs" />
+    <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,7 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
     <Folder Include="Persistence\" />
     <Folder Include="Presentation\" />
   </ItemGroup>
