@@ -1,12 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Examiner.Business
+﻿namespace Examiner.Business
 {
-  interface ExamDAO
+  using Examiner.Business.Models;
+
+  public class ExamDAO : BaseDAO<Exam>
   {
+    public void Add(Exam t)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public void Update(Exam t)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public void Delete(Exam t)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public System.Collections.Generic.List<Exam> GetAll()
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public Exam GetById(int id)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

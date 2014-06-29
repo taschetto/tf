@@ -1,12 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Examiner.Business
+﻿namespace Examiner.Business
 {
-  interface CategoryDAO
+  using Examiner.Business.Models;
+
+  public class CategoryDAO : BaseDAO<Category>
   {
+    public void Add(Category t)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public void Update(Category t)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public void Delete(Category t)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public System.Collections.Generic.List<Category> GetAll()
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public Category GetById(int id)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

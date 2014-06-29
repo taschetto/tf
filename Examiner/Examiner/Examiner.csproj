@@ -78,6 +78,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Business\DAOs\AlternativeDAO.cs" />
+    <Compile Include="Business\DAOs\AnswerDAO.cs" />
+    <Compile Include="Business\DAOs\BaseDAO.cs" />
+    <Compile Include="Business\DAOs\StudentDAO.cs" />
+    <Compile Include="Business\DAOs\StudentExamDAO.cs" />
     <Compile Include="Business\User.cs" />
     <Compile Include="Business\DAOs\UserDAO.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />

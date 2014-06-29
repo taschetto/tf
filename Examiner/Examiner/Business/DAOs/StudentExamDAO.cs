@@ -1,34 +1,32 @@
-﻿namespace Examiner.Business
+﻿namespace Examiner.Business.DAOs
 {
+  using Examiner.Business.Models;
   using System;
   using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
 
-  public class UserDAO : BaseDAO<User>
+  public class StudentExamDAO : BaseDAO<StudentExam>
   {
-    public void Add(User t)
+    public void Add(StudentExam t)
     {
       throw new NotImplementedException();
     }
 
-    public void Update(User t)
+    public void Update(StudentExam t)
     {
       throw new NotImplementedException();
     }
 
-    public void Delete(User t)
+    public void Delete(StudentExam t)
     {
       throw new NotImplementedException();
     }
 
-    public List<User> GetAll()
+    public List<StudentExam> GetAll()
     {
       throw new NotImplementedException();
     }
 
-    public User GetById(int id)
+    public StudentExam GetById(int id)
     {
       throw new NotImplementedException();
     }
