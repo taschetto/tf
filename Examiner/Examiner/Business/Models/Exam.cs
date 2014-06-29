@@ -8,8 +8,8 @@
 
   public class Exam : BaseModel
   {
-    private List<Category> categories;
-    private List<StudentExam> studentExams;
+    private List<Category> _categories;
+    private List<StudentExam> _studentExams;
 
     public Exam(int id, int questionCount, bool open, string accessCode)
       : base(id)
@@ -29,12 +29,12 @@
     {
       get
       {
-        if (this.categories == null)
+        if (this._categories == null)
         {
-          this.categories = new List<Category>();
+          this._categories = new List<Category>();
         }
 
-        return this.categories;
+        return this._categories;
       }
     }
 
@@ -42,12 +42,12 @@
     {
       get
       {
-        if (this.studentExams == null)
+        if (this._studentExams == null)
         {
-          this.studentExams = new List<StudentExam>();
+          this._studentExams = new List<StudentExam>();
         }
 
-        return this.studentExams;
+        return this._studentExams;
       }
     }
 
