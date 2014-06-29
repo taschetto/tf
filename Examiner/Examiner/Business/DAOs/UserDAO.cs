@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Examiner.Business
 {
-    interface UserDAO
-    {
-         
-    }
-
-
+  interface UserDAO
+  {
+  }
 }

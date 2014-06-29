@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Examiner.Business
 {
-    interface ExamDAO
-    {
-    }
+  interface ExamDAO
+  {
+  }
 }
