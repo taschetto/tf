@@ -2,7 +2,7 @@
 {
   using Examiner.Business;
 
-  public class CategoryDB : CategoryDAO
+  public class StudentDB : StudentDAO
   {
   }
 }

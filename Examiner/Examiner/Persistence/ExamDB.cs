@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Examiner.Persistence
+﻿namespace Examiner.Persistence
 {
-    class ExamDB
-    {
-    }
+  using Examiner.Business;
+
+  public class ExamDB : ExamDAO
+  {
+  }
 }

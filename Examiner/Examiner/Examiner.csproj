@@ -83,9 +83,13 @@
     <Compile Include="Business\DAOs\BaseDAO.cs" />
     <Compile Include="Business\DAOs\StudentDAO.cs" />
     <Compile Include="Business\DAOs\StudentExamDAO.cs" />
-    <Compile Include="Business\User.cs" />
+    <Compile Include="Business\Models\User.cs" />
     <Compile Include="Business\DAOs\UserDAO.cs" />
+    <Compile Include="Persistence\AlternativeDB.cs" />
+    <Compile Include="Persistence\AnswerDB.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />
+    <Compile Include="Persistence\StudentDB.cs" />
+    <Compile Include="Persistence\StudentExamDB.cs" />
     <Compile Include="supernova.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DAOs\ExamDAO.cs" />
-    <Compile Include="Business\ExamFacade.cs" />
+    <Compile Include="Business\ExaminerFacade.cs" />
     <Compile Include="Business\DAOs\QuestionDAO.cs" />
     <Compile Include="Business\Validator.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />

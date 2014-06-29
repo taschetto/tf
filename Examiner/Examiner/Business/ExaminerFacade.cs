@@ -1,4 +1,4 @@
-﻿namespace Examiner.Presentation
+﻿namespace Examiner.Business
 {
   using System;
   using System.Collections.Generic;
@@ -6,7 +6,7 @@
   using System.Text;
   using System.Threading.Tasks;
 
-  class ControlGUI
+  class ExaminerFacade
   {
   }
 }
