@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Persistencia
+namespace Examiner.Presentation
 {
-    class QuestionDB
+    class ControlGUI
     {
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Apresentacao
+namespace Examiner.Business
 {
-    class ControlGUI
+    interface CategoryDAO
     {
     }
 }

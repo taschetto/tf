@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Negocio
+namespace Examiner.Business
 {
     interface QuestionDAO
     {
     }
 }
-A

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Persistencia
+namespace Examiner.Business
 {
-    class ExamDB
+    interface UserDAO
     {
+         
     }
+
+
 }

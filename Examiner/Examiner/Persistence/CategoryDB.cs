@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Persistencia
+namespace Examiner.Persistence
 {
     class CategoryDB
     {
