@@ -68,8 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Negocio\User.cs" />
-    <Compile Include="Negocio\UserDAO.cs" />
+    <Compile Include="Business\Models\User.cs" />
+    <Compile Include="Business\DAOs\UserDAO.cs" />
+    <Compile Include="Persistence\ConnectionDB.cs" />
     <Compile Include="supernova.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,24 +92,21 @@
     <Compile Include="Business\Models\Question.cs" />
     <Compile Include="Business\Models\Student.cs" />
     <Compile Include="Business\Models\StudentExam.cs" />
-    <Compile Include="Apresentacao\ControlGUI.cs" />
-    <Compile Include="Negocio\Category.cs" />
-    <Compile Include="Negocio\CategoryDAO.cs" />
-    <Compile Include="Negocio\Exam.cs" />
+    <Compile Include="Presentation\ControlGUI.cs" />
+    <Compile Include="Business\DAOs\CategoryDAO.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Negocio\ExamDAO.cs" />
-    <Compile Include="Negocio\ExamFacade.cs" />
-    <Compile Include="Negocio\Question.cs" />
-    <Compile Include="Negocio\QuestionDAO.cs" />
-    <Compile Include="Negocio\Validator.cs" />
-    <Compile Include="Persistencia\CategoryDB.cs" />
-    <Compile Include="Persistencia\ExamDB.cs" />
-    <Compile Include="Persistencia\QuestionDB.cs" />
+    <Compile Include="Business\DAOs\ExamDAO.cs" />
+    <Compile Include="Business\Models\ExamFacade.cs" />
+    <Compile Include="Business\DAOs\QuestionDAO.cs" />
+    <Compile Include="Business\Models\Validator.cs" />
+    <Compile Include="Persistence\CategoryDB.cs" />
+    <Compile Include="Persistence\ExamDB.cs" />
+    <Compile Include="Persistence\QuestionDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -147,8 +145,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Persistence\" />
-    <Folder Include="Presentation\" />
     <Content Include="supernova.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -173,6 +169,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Apresentacao\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
