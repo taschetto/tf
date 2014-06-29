@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Business
+namespace Examiner.Business.Models
 {
-    interface QuestionDAO
+    enum StudentType
     {
+        Student, Teacher
     }
 }

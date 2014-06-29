@@ -78,8 +78,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Business\Models\CreateExamFactory.cs" />
+    <Compile Include="Business\Models\ExamClosed.cs" />
+    <Compile Include="Business\Models\ExamFree.cs" />
+    <Compile Include="Business\Models\ICreateExam.cs" />
+    <Compile Include="Business\Models\ExamType.cs" />
+    <Compile Include="Business\Models\StudentType.cs" />
     <Compile Include="Business\Models\User.cs" />
-    <Compile Include="Business\DAOs\UserDAO.cs" />
+    <Compile Include="Business\DAOs\IUserDAO.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />
     <Compile Include="supernova.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,16 +109,16 @@
     <Compile Include="Business\Models\Student.cs" />
     <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="Presentation\ControlGUI.cs" />
-    <Compile Include="Business\DAOs\CategoryDAO.cs" />
+    <Compile Include="Business\DAOs\ICategoryDAO.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\DAOs\ExamDAO.cs" />
+    <Compile Include="Business\DAOs\IExamDAO.cs" />
     <Compile Include="Business\Models\ExamFacade.cs" />
-    <Compile Include="Business\DAOs\QuestionDAO.cs" />
+    <Compile Include="Business\DAOs\IQuestionDAO.cs" />
     <Compile Include="Business\Models\Validator.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />

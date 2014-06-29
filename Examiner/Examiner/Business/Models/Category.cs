@@ -8,8 +8,8 @@
 
   public class Category : BaseModel
   {
-    private List<Exam> exams;
-    private List<Question> questions;
+    private List<Exam> _exams;
+    private List<Question> _questions;
 
     public Category(int id, string name, string description)
       : base(id)
@@ -26,8 +26,8 @@
     { 
       get
       {
-        this.exams = this.exams ?? new List<Exam>();
-        return this.exams;
+        this._exams = this._exams ?? new List<Exam>();
+        return this._exams;
       }
     }
 
@@ -35,8 +35,8 @@
     { 
       get
       {
-        this.questions = this.questions ?? new List<Question>();
-        return this.questions;
+        this._questions = this._questions ?? new List<Question>();
+        return this._questions;
       }
     }
 

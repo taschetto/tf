@@ -8,7 +8,7 @@
 
   public class Alternative : BaseModel
   {
-    private List<Answer> answers;
+    private List<Answer> _answers;
 
     public Alternative(int id, string answerContent, Question question) : base(id)
     {
@@ -24,8 +24,8 @@
     {
       get
       {
-        this.answers = this.answers ?? new List<Answer>();
-        return this.answers;
+        this._answers = this._answers ?? new List<Answer>();
+        return this._answers;
       }
     }
 
