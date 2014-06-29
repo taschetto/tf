@@ -2,7 +2,7 @@
 {
   using System.Collections.Generic;
 
-  interface BaseDAO<T>
+  public interface BaseDAO<T>
   {
     void Add(T t);
 
