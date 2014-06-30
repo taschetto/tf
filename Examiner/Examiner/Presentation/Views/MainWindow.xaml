@@ -4,16 +4,17 @@
         Title="Examiner" Height="350" Width="525">
   <Grid>
     <DockPanel>
-      <Menu DockPanel.Dock="Top" Width="Auto" Height="30">
+      <Menu DockPanel.Dock="Top" Width="Auto" Height="Auto">
         <MenuItem Header="_Opções">
           <MenuItem Header="_Contexto">
-            <MenuItem Header="_Professor" />
-            <MenuItem Header="_Aluno" />
-            <MenuItem Header="_Administrador"/>
+            <MenuItem Header="_Professor" IsCheckable="True" IsChecked="False" />
+            <MenuItem Header="_Aluno" IsCheckable="True"/>
+            <MenuItem Header="_Administrador" IsCheckable="True" />
           </MenuItem>
           <Separator/>
           <MenuItem Header="_Sair"/>
         </MenuItem>
+        <MenuItem Header="_Sobre" />
       </Menu>
       <StackPanel></StackPanel>
     </DockPanel>

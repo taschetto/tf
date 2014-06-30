@@ -5,9 +5,5 @@
 
   public class ExaminerFacade
   {
-    public void AddQuestion(Question question)
-    {
-      throw new NotImplementedException();
-    }
   }
 }
