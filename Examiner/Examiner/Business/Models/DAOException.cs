@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Examiner.Business.Models
 {
-    class DAOExcepton : Exception
+    class DAOException : Exception
     {
-        public DAOExcepton(string message) : base(message)
+        public DAOException(string message) : base(message)
         {
         }
     }
