@@ -2,7 +2,7 @@
 {
   using Examiner.Business.Models;
 
-  public interface CategoryDAO : BaseDAO<Category>
+  public interface StudentDAO : BaseDAO<Student>
   {
   }
 }

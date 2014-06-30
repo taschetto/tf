@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Business
+namespace Examiner.Negocio
 {
-  class Validator
-  {
-  }
+    class Validator
+    {
+    }
 }

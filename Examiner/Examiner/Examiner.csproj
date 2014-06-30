@@ -49,8 +49,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45">
+      <HintPath>..\packages\MvvmLightLibs.4.3.31.1\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45">
+      <HintPath>..\packages\MvvmLightLibs.4.3.31.1\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
     <Reference Include="GitHubUpdate">
       <HintPath>..\packages\GitHubUpdate.1.1.0.0\lib\net45\GitHubUpdate.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Octokit">
       <HintPath>..\packages\Octokit.0.3.4\lib\net45\Octokit.dll</HintPath>
@@ -61,6 +70,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.3.31.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,20 +90,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Business\Models\CreateExamFactory.cs" />
-    <Compile Include="Business\Models\ExamClosed.cs" />
-    <Compile Include="Business\Models\ExamFree.cs" />
-    <Compile Include="Business\Models\ICreateExam.cs" />
-    <Compile Include="Business\Models\ExamType.cs" />
-    <Compile Include="Business\Models\StudentType.cs" />
+    <Compile Include="Business\DAOs\AlternativeDAO.cs" />
+    <Compile Include="Business\DAOs\AnswerDAO.cs" />
+    <Compile Include="Business\DAOs\BaseDAO.cs" />
+    <Compile Include="Business\DAOs\StudentDAO.cs" />
+    <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
     <Compile Include="Business\Models\User.cs" />
-    <Compile Include="Business\DAOs\IUserDAO.cs" />
+    <Compile Include="Persistence\AlternativeDB.cs" />
+    <Compile Include="Persistence\AnswerDB.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />
+    <Compile Include="Persistence\StudentDB.cs" />
+    <Compile Include="Persistence\StudentExamDB.cs" />
     <Compile Include="supernova.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>supernova.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,16 +125,16 @@
     <Compile Include="Business\Models\Student.cs" />
     <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="Presentation\ControlGUI.cs" />
-    <Compile Include="Business\DAOs\ICategoryDAO.cs" />
+    <Compile Include="Business\DAOs\CategoryDAO.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\DAOs\IExamDAO.cs" />
-    <Compile Include="Business\Models\ExamFacade.cs" />
-    <Compile Include="Business\DAOs\IQuestionDAO.cs" />
+    <Compile Include="Business\DAOs\ExamDAO.cs" />
+    <Compile Include="Business\Models\ExaminerFacade.cs" />
+    <Compile Include="Business\DAOs\QuestionDAO.cs" />
     <Compile Include="Business\Models\Validator.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />
@@ -188,7 +204,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Apresentacao\" />
+    <Folder Include="Presentation\Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
