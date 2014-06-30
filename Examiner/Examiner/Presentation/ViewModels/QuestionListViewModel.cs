@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Examiner.Presentation.ViewModels
+﻿namespace Examiner.Presentation.ViewModels
 {
-  class QuestionListViewModel
+  using System.Collections.ObjectModel;
+  using Examiner.Business.Models;
+
+  public class QuestionListViewModel : ViewModelBase
   {
+    public QuestionListViewModel() : base(@"Questions")
+    {
+      this.Questions = new ObservableCollection<Question>();
+
+      foreach (Question question in ExaminerFacade.Instance.GetAll<Question>())
+      {
+        this.Questions.Add(question);
+      }
+    }
+
+    public ObservableCollection<Question> Questions { get; private set; }
   }
 }

@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace Examiner.Presentation.Views
+﻿namespace Examiner.Presentation.Views
 {
-  /// <summary>
-  /// Interaction logic for ProfessorWindow.xaml
-  /// </summary>
+  using System.Windows;
+  using Examiner.Presentation.ViewModels;
+
   public partial class ProfessorWindow : Window
   {
     public ProfessorWindow()
     {
-      InitializeComponent();
+      this.InitializeComponent();
+
+      this.DataContext = new ProfessorViewModel();
     }
   }
 }

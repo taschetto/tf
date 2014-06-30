@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Media.Imaging;
-using Examiner.Business.DAOs;
-using Examiner.Business.Exceptions;
-using Examiner.Business.Models;
-
-namespace Examiner.Persistence
+﻿namespace Examiner.Persistence
 {
-
+  using System.Collections.Generic;
+  using System.Data;
+  using System.Data.SqlClient;
+  using Examiner.Business.DAOs;
+  using Examiner.Business.Exceptions;
+  using Examiner.Business.Models;
 
   public class StudentDB : IStudentDao
   {
-    private static StudentDB _referenceStudentDb = null;
+    private static StudentDB instance = null;
 
-    public static StudentDB GetInstance()
+    public static StudentDB Instance
     {
-      if (_referenceStudentDb == null)
+      get
       {
-        _referenceStudentDb = new StudentDB();
+        if (instance == null)
+        {
+          instance = new StudentDB();
+        }
+        return instance;
       }
-      return (_referenceStudentDb);
     }
 
     public void Add(Student t)

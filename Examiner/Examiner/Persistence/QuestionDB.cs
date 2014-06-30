@@ -1,28 +1,27 @@
 ﻿namespace Examiner.Persistence
 {
-  using System;
   using System.Collections.Generic;
   using System.Data;
   using System.Data.SqlClient;
   using Examiner.Business.DAOs;
   using Examiner.Business.Exceptions;
   using Examiner.Business.Models;
-  using Microsoft.CSharp;
 
   public class QuestionDB : IQuestionDao
   {
+    private static QuestionDB instance = null;
 
-    private static QuestionDB _referenceQuestionDb = null;
-
-    public static QuestionDB GetInstance()
+    public static QuestionDB Instance
     {
-      if (_referenceQuestionDb == null)
+      get
       {
-        _referenceQuestionDb = new QuestionDB();
+        if (instance == null)
+        {
+          instance = new QuestionDB();
+        }
+        return instance;
       }
-      return (_referenceQuestionDb);
     }
-
 
     public void Add(Question t)
     {

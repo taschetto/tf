@@ -110,8 +110,10 @@
     <Compile Include="Presentation\ViewModels\CategoryListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ExamListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ProfessorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ViewModelBase.cs" />
     <Compile Include="Presentation\ViewModels\ViewModelLocator.cs" />
     <Page Include="Presentation\Views\CategoryListView.xaml">
       <SubType>Designer</SubType>

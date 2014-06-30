@@ -7,6 +7,21 @@
 
   public class CategoryDB : ICategoryDao
   {
+    private static CategoryDB instance = null;
+
+    public static CategoryDB Instance
+    {
+      get
+      {
+        if (instance == null)
+        {
+          instance = new CategoryDB();
+        }
+
+        return instance;
+      }
+    }
+
     public void Add(Category t)
     {
       throw new NotImplementedException();
