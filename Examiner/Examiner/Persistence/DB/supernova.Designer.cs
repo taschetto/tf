@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Examiner {
+namespace Examiner.Persistence.DB {
     
     
     /// <summary>

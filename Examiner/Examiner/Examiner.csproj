@@ -101,14 +101,15 @@
     <Compile Include="Persistence\ConnectionDB.cs" />
     <Compile Include="Persistence\StudentDB.cs" />
     <Compile Include="Persistence\StudentExamDB.cs" />
-    <Compile Include="supernova.Designer.cs">
+    <Compile Include="Persistence\DB\supernova.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>supernova.xsd</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ViewModelLocator.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="Presentation\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -126,19 +127,25 @@
     <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="Presentation\ControlGUI.cs" />
     <Compile Include="Business\DAOs\CategoryDAO.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Presentation\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Presentation\Views\QuestionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DAOs\ExamDAO.cs" />
-    <Compile Include="Business\Models\ExaminerFacade.cs" />
+    <Compile Include="Business\ExaminerFacade.cs" />
     <Compile Include="Business\DAOs\QuestionDAO.cs" />
-    <Compile Include="Business\Models\Validator.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />
     <Compile Include="Persistence\QuestionDB.cs" />
+    <Compile Include="Presentation\Views\QuestionView.xaml.cs">
+      <DependentUpon>QuestionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -162,15 +169,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="supernova.xsc">
+    <None Include="Persistence\DB\supernova.xsc">
       <DependentUpon>supernova.xsd</DependentUpon>
     </None>
-    <None Include="supernova.xsd">
+    <None Include="Persistence\DB\supernova.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>supernova.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="supernova.xss">
+    <None Include="Persistence\DB\supernova.xss">
       <DependentUpon>supernova.xsd</DependentUpon>
     </None>
   </ItemGroup>
@@ -178,10 +185,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="supernova.mdf">
+    <Content Include="Persistence\DB\supernova.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="supernova_log.ldf">
+    <Content Include="Persistence\DB\supernova_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>supernova.mdf</DependentUpon>
     </Content>
@@ -203,9 +210,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presentation\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
