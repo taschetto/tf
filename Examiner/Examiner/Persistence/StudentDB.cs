@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using Examiner.Business.DAOs;
+using Examiner.Business.Exceptions;
 using Examiner.Business.Models;
 
 namespace Examiner.Persistence
@@ -12,7 +13,7 @@ namespace Examiner.Persistence
     {
         private static StudentDB _referenceStudentDb = null;
 
-        public static StudentDB GetInstance()
+        public static StudentDB Instance()
         {
             if (_referenceStudentDb == null)
             {
@@ -44,7 +45,7 @@ namespace Examiner.Persistence
             }
             catch (SqlException e)
             {
-                throw new DAOException(e.Message);
+                throw new DAOException(e);
             }
         }
 
@@ -71,7 +72,7 @@ namespace Examiner.Persistence
             }
             catch (SqlException e)
             {
-                throw new DAOException(e.Message);
+                throw new DAOException(e);
             }
         }
 
@@ -94,7 +95,7 @@ namespace Examiner.Persistence
             }
             catch (SqlException e)
             {
-                throw new DAOException(e.Message);
+                throw new DAOException(e);
             }
         }
 
@@ -104,33 +105,38 @@ namespace Examiner.Persistence
             {
                 SqlCommand comando = new SqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText =
-                    string.Format("select * from Student");
-
-
-
-                SqlDataAdapter adpter = new SqlDataAdapter(comando);
-                DataTable table = new DataTable();
-
-                adpter.Fill(table);
-
-                /*Implentar
-                 * 
-                 * 
-                 * 
-                 * 
-                 * 
-                 */
+                comando.CommandText =string.Format("select * from Student");
 
                 comando.Connection = ConnectionDB.CreateConnection();
+                SqlDataAdapter adpter = new SqlDataAdapter(comando);
+                DataTable table = new DataTable();
+                adpter.Fill(table);
 
-                comando.Connection.Open();
-                comando.ExecuteNonQuery();
-                comando.Connection.Close();
+                List<Student> students = new List<Student>();
+
+                if (table.Rows.Count == 0)
+                {
+                    return null;
+                }
+
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    Student student = new Student(
+                        (int)table.Rows[i][0],
+                        (string)table.Rows[i][1],
+                        (string)table.Rows[i][2],
+                        (string)table.Rows[i][3],
+                        (string)table.Rows[i][4]
+
+                        );
+                    students.Add(student);
+                }
+
+                return students;
             }
             catch (SqlException e)
             {
-                throw new DAOException(e.Message);
+                throw new DAOException(e);
             }
         }
 
@@ -144,16 +150,33 @@ namespace Examiner.Persistence
                    string.Format("SELECT * FROM  Student WHERE id_question = {0}",
                                   id
                                    );
-                comando.Connection = ConnectionDB.CreateConnection();
 
+                comando.Connection = ConnectionDB.CreateConnection();
                 comando.Connection.Open();
-                comando.ExecuteNonQuery();
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                if (!reader.Read())
+                {
+                    return null;
+                }
+
+                Student student= new Student(
+                        (int)reader["id_student"],
+                        (string)reader["registration"],
+                        (string)reader["password"],
+                        (string)reader["name"],
+                        (string)reader["email"]
+                        );
+
+
                 comando.Connection.Close();
+                return student;
 
             }
             catch (SqlException e)
             {
-                throw new DAOException(e.Message);
+                throw new DAOException(e);
             }
         }
     }
