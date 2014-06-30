@@ -7,7 +7,7 @@
   using System.Threading.Tasks;
   public class StudentExam : BaseModel
   {
-    private List<Answer> answers;
+    private List<Answer> _answers;
 
     public StudentExam(int id, Student student, Exam exam) : base(id)
     {
@@ -23,8 +23,8 @@
     {
       get
       {
-        this.answers = this.answers ?? new List<Answer>();
-        return this.answers;
+        this._answers = this._answers ?? new List<Answer>();
+        return this._answers;
       }
     }
 

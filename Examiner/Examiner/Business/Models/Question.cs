@@ -8,9 +8,9 @@
 
   public class Question : BaseModel
   {
-    private List<Category> categories;
-    private List<Alternative> alternatives;
-    private List<Answer> answers;
+    private List<Category> _categories;
+    private List<Alternative> _alternatives;
+    private List<Answer> _answers;
 
     public Question(int id, string questionContent, string feedbackContent, Alternative rightAlternative)
       : base(id)
@@ -30,8 +30,8 @@
     {
       get
       {
-        this.categories = this.categories ?? new List<Category>();
-        return this.categories;
+        this._categories = this._categories ?? new List<Category>();
+        return this._categories;
       }
     }
 
@@ -39,8 +39,8 @@
     {
       get
       {
-        this.alternatives = this.alternatives ?? new List<Alternative>();
-        return this.alternatives;
+        this._alternatives = this._alternatives ?? new List<Alternative>();
+        return this._alternatives;
       }
     }
 
@@ -48,8 +48,8 @@
     {
       get
       {
-        this.answers = this.answers ?? new List<Answer>();
-        return this.answers;
+        this._answers = this._answers ?? new List<Answer>();
+        return this._answers;
       }
     }
 

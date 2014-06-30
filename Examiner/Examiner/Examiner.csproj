@@ -94,7 +94,7 @@
     <Compile Include="Business\DAOs\AnswerDAO.cs" />
     <Compile Include="Business\DAOs\BaseDAO.cs" />
     <Compile Include="Business\DAOs\StudentDAO.cs" />
-    <Compile Include="Business\DAOs\StudentExamDAO.cs" />
+    <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
     <Compile Include="Business\Models\User.cs" />
     <Compile Include="Persistence\AlternativeDB.cs" />
     <Compile Include="Persistence\AnswerDB.cs" />
@@ -133,9 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DAOs\ExamDAO.cs" />
-    <Compile Include="Business\ExaminerFacade.cs" />
+    <Compile Include="Business\Models\ExaminerFacade.cs" />
     <Compile Include="Business\DAOs\QuestionDAO.cs" />
-    <Compile Include="Business\Validator.cs" />
+    <Compile Include="Business\Models\Validator.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />
     <Compile Include="Persistence\QuestionDB.cs" />

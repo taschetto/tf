@@ -8,7 +8,7 @@
 
   public class Student : BaseModel
   {
-    private List<StudentExam> studentExams;
+    private List<StudentExam> _studentExams;
 
     public Student(int id, string registration, string password, string name, string email) : base(id)
     {
@@ -30,8 +30,8 @@
     { 
       get
       {
-        this.studentExams = this.studentExams ?? new List<StudentExam>();
-        return this.studentExams;
+        this._studentExams = this._studentExams ?? new List<StudentExam>();
+        return this._studentExams;
       }
     }
 

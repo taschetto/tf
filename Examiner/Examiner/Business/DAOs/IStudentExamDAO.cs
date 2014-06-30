@@ -2,7 +2,7 @@
 {
   using Examiner.Business.Models;
 
-  public interface StudentExamDAO : BaseDAO<StudentExam>
+  public interface IStudentExamDao : BaseDAO<StudentExam>
   {
   }
 }

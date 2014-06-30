@@ -2,7 +2,7 @@
 {
   using Examiner.Business.DAOs;
 
-  public class StudentExamDB : StudentExamDAO
+  public class StudentExamDB : IStudentExamDao
   {
     public void Add(Business.Models.StudentExam t)
     {
