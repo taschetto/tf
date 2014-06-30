@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Examiner.Presentation.Views
 {
   /// <summary>
-  /// Interaction logic for QuestionView.xaml
+  /// Interaction logic for QuestionListView.xaml
   /// </summary>
-  public partial class QuestionView : UserControl
+  public partial class QuestionListView : UserControl
   {
-    public QuestionView()
+    public QuestionListView()
     {
       InitializeComponent();
     }

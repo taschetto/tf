@@ -1,12 +1,26 @@
-﻿using System;
-using Examiner.Business.Models;
-using Examiner.Business.DAOs;
-
-namespace Examiner.Persistence
+﻿namespace Examiner.Persistence
 {
+  using System;
+  using Examiner.Business.Models;
+  using Examiner.Business.DAOs;
 
   public class AlternativeDB : IAlternativeDao
   {
+    private static AlternativeDB instance = null;
+
+    public static AlternativeDB Instance
+    {
+      get
+      {
+        if (instance == null)
+        {
+          instance = new AlternativeDB();
+        }
+
+        return instance;
+      }
+    }
+
     public void Add(Alternative t)
     {
       throw new NotImplementedException();

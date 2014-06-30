@@ -95,7 +95,7 @@
     <Compile Include="Business\DAOs\IBaseDAO.cs" />
     <Compile Include="Business\DAOs\IStudentDAO.cs" />
     <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
-    <Compile Include="Business\Models\DAOException.cs" />
+    <Compile Include="Business\Exceptions\DAOException.cs" />
     <Compile Include="Business\Models\User.cs" />
     <Compile Include="Persistence\AlternativeDB.cs" />
     <Compile Include="Persistence\AnswerDB.cs" />
@@ -107,9 +107,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>supernova.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ViewModels\CategoryListViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ExamListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ProfessorViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\QuestionListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ViewModelBase.cs" />
     <Compile Include="Presentation\ViewModels\ViewModelLocator.cs" />
+    <Page Include="Presentation\Views\CategoryListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\CategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ExamListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\ExamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,10 +149,34 @@
     <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="Presentation\ControlGUI.cs" />
     <Compile Include="Business\DAOs\ICategoryDAO.cs" />
+    <Compile Include="Presentation\Views\CategoryListView.xaml.cs">
+      <DependentUpon>CategoryListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\CategoryView.xaml.cs">
+      <DependentUpon>CategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ExamListView.xaml.cs">
+      <DependentUpon>ExamListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\ExamView.xaml.cs">
+      <DependentUpon>ExamView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Presentation\Views\ProfessorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\QuestionCategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\QuestionListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\QuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +189,15 @@
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />
     <Compile Include="Persistence\QuestionDB.cs" />
+    <Compile Include="Presentation\Views\ProfessorWindow.xaml.cs">
+      <DependentUpon>ProfessorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\QuestionCategoryView.xaml.cs">
+      <DependentUpon>QuestionCategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\QuestionListView.xaml.cs">
+      <DependentUpon>QuestionListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\QuestionView.xaml.cs">
       <DependentUpon>QuestionView.xaml</DependentUpon>
     </Compile>
