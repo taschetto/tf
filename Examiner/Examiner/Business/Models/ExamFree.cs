@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Examiner.Business.DAOs;
-using Examiner.Business.Models;
 
-namespace Examiner.Persistence
+namespace Examiner.Business.Models
 {
-    class CategoryDB : ICategoryDao
+    class ExamFree : ICreateExam
     {
-        public void CreateCategory(Category c)
+        public void CreateExam(Exam e)
         {
             throw new NotImplementedException();
         }

@@ -10,5 +10,9 @@ namespace Examiner.Persistence
 {
     class ExamDB : IExamDao
     {
+        public void CreateExam(Exam e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
