@@ -1,32 +1,35 @@
 ﻿namespace Examiner.Persistence
 {
+  using System;
+  using System.Collections.Generic;
   using Examiner.Business.DAOs;
+  using Examiner.Business.Models;
 
   public class AlternativeDB : AlternativeDAO
   {
-    public void Add(Business.Models.Alternative t)
+    public void Add(Alternative t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Update(Business.Models.Alternative t)
+    public void Update(Alternative t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Delete(Business.Models.Alternative t)
+    public void Delete(Alternative t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public System.Collections.Generic.List<Business.Models.Alternative> GetAll()
+    public List<Alternative> GetAll()
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public Business.Models.Alternative GetById(int id)
+    public Alternative GetById(int id)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }

@@ -1,32 +1,35 @@
 ﻿namespace Examiner.Persistence
 {
+  using System;
+  using System.Collections.Generic;
   using Examiner.Business.DAOs;
+  using Examiner.Business.Models;
 
   public class AnswerDB : AnswerDAO
   {
-    public void Add(Business.Models.Answer t)
+    public void Add(Answer t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Update(Business.Models.Answer t)
+    public void Update(Answer t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Delete(Business.Models.Answer t)
+    public void Delete(Answer t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public System.Collections.Generic.List<Business.Models.Answer> GetAll()
+    public List<Answer> GetAll()
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public Business.Models.Answer GetById(int id)
+    public Answer GetById(int id)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }

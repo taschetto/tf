@@ -1,32 +1,35 @@
 ﻿namespace Examiner.Persistence
 {
+  using System;
+  using System.Collections.Generic;
   using Examiner.Business;
+  using Examiner.Business.Models;
 
   public class ExamDB : ExamDAO
   {
-    public void Add(Business.Models.Exam t)
+    public void Add(Exam t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Update(Business.Models.Exam t)
+    public void Update(Exam t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Delete(Business.Models.Exam t)
+    public void Delete(Exam t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public System.Collections.Generic.List<Business.Models.Exam> GetAll()
+    public List<Exam> GetAll()
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public Business.Models.Exam GetById(int id)
+    public Exam GetById(int id)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }

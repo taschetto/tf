@@ -1,32 +1,35 @@
 ﻿namespace Examiner.Persistence
 {
+  using System;
+  using System.Collections.Generic;
   using Examiner.Business;
+  using Examiner.Business.Models;
 
   public class StudentDB : StudentDAO
   {
-    public void Add(Business.Models.Student t)
+    public void Add(Student t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Update(Business.Models.Student t)
+    public void Update(Student t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public void Delete(Business.Models.Student t)
+    public void Delete(Student t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public System.Collections.Generic.List<Business.Models.Student> GetAll()
+    public List<Student> GetAll()
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public Business.Models.Student GetById(int id)
+    public Student GetById(int id)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }
