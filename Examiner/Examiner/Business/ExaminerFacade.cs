@@ -1,11 +1,13 @@
-﻿using Examiner.Business.Models;
-namespace Examiner.Business
+﻿namespace Examiner.Business
 {
+  using System;
+  using Examiner.Business.Models;
+
   public class ExaminerFacade
   {
     public void AddQuestion(Question question)
     {
-      throw new 
+      throw new NotImplementedException();
     }
   }
 }
