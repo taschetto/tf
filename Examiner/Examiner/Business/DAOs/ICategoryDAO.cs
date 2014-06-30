@@ -2,8 +2,7 @@
 
 namespace Examiner.Business.DAOs
 {
-    interface ICategoryDao
-    {
-        void CreateCategory(Category c);
-    }
+    public interface ICategoryDao : IBaseDao<Category>
+  {
+  }
 }

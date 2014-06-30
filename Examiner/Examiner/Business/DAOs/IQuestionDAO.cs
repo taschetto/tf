@@ -2,8 +2,9 @@
 
 namespace Examiner.Business.DAOs
 {
-    interface IQuestionDao
-    {
-        void CreateQuestion(Question q);
-    }
+  
+
+  public interface IQuestionDao : IBaseDao<Question>
+  {
+  }
 }

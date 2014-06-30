@@ -1,45 +1,46 @@
-﻿using System.Collections.Generic;
-using Examiner.Business;
-
+﻿using System;
+using System.Collections.Generic;
+using Examiner.Business.DAOs;
+using Examiner.Business.Models;
 namespace Examiner.Persistence
 {
-  using Examiner.Business.Models;
+  
 
-  public class CategoryDB : CategoryDAO
+  public class CategoryDB : ICategoryDao
   {
       public void Add(Category t)
       {
-          throw new System.NotImplementedException();
+          throw new NotImplementedException();
       }
 
       public void Update(Category t)
       {
-          throw new System.NotImplementedException();
+          throw new NotImplementedException();
       }
 
       public void Delete(Category t)
       {
-          throw new System.NotImplementedException();
+          throw new NotImplementedException();
       }
 
-      List<Category> BaseDAO<Category>.GetAll()
+      List<Category> IBaseDao<Category>.GetAll()
       {
-          throw new System.NotImplementedException();
+          throw new NotImplementedException();
       }
 
-      Category BaseDAO<Category>.GetById(int id)
+      Category IBaseDao<Category>.GetById(int id)
       {
-          throw new System.NotImplementedException();
+          throw new NotImplementedException();
       }
 
     public List<Category> GetAll()
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
     public Category GetById(int id)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }

@@ -1,34 +1,36 @@
-﻿using Examiner.Business.Models;
-using Examiner.Business;
+﻿using System;
+using System.Collections.Generic;
+using Examiner.Business.DAOs;
+using Examiner.Business.Models;
 
 namespace Examiner.Persistence
 {
   
-  public class QuestionDB : QuestionDAO
+  public class QuestionDB : IQuestionDao
   {
     public void Add(Question t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
     public void Update(Question t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
     public void Delete(Question t)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
-    public System.Collections.Generic.List<Question> GetAll()
+    public List<Question> GetAll()
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
     public Question GetById(int id)
     {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }

@@ -2,7 +2,7 @@
 
 namespace Examiner.Business.DAOs
 {
-    public interface IExamDao : IBaseDao<Exam>
+    public interface IStudentDao : IBaseDao<Student>
   {
   }
 }
