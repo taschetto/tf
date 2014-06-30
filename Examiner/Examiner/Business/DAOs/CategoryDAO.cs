@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examiner.Business.Models
+namespace Examiner.Business
 {
-    class CreateExamFactory
-    {
-    }
+  interface CategoryDAO
+  {
+  }
 }
