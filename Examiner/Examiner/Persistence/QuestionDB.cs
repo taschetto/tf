@@ -1,11 +1,10 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Examiner.Business.DAOs;
 using Examiner.Business.Models;
-using Examiner.Business.Models;
-using Microsoft.CSharp;
+
 
 namespace Examiner.Persistence
 {

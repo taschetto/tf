@@ -95,6 +95,7 @@
     <Compile Include="Business\DAOs\IBaseDAO.cs" />
     <Compile Include="Business\DAOs\IStudentDAO.cs" />
     <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
+    <Compile Include="Business\Models\DAOException.cs" />
     <Compile Include="Business\Models\User.cs" />
     <Compile Include="Persistence\AlternativeDB.cs" />
     <Compile Include="Persistence\AnswerDB.cs" />
