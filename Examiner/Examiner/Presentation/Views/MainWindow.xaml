@@ -1,0 +1,24 @@
+﻿<Window x:Class="Examiner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Examiner" Height="350" Width="525">
+  <Grid>
+    <DockPanel>
+      <Menu DockPanel.Dock="Top" Width="Auto" Height="30">
+        <MenuItem Header="_Opções">
+          <MenuItem Header="_Contexto">
+            <MenuItem Header="_Professor" />
+            <MenuItem Header="_Aluno" />
+            <MenuItem Header="_Administrador"/>
+          </MenuItem>
+          <Separator/>
+          <MenuItem Header="_Sair"/>
+        </MenuItem>
+      </Menu>
+      <StackPanel></StackPanel>
+    </DockPanel>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+  </Grid>
+</Window>

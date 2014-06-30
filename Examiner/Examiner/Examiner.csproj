@@ -135,7 +135,6 @@
     <Compile Include="Business\DAOs\ExamDAO.cs" />
     <Compile Include="Business\Models\ExaminerFacade.cs" />
     <Compile Include="Business\DAOs\QuestionDAO.cs" />
-    <Compile Include="Business\Models\Validator.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />
     <Compile Include="Persistence\QuestionDB.cs" />
