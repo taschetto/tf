@@ -192,6 +192,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>supernova.mdf</DependentUpon>
     </Content>
+    <Content Include="Persistence\SCRIPTSDDL\DDL.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
