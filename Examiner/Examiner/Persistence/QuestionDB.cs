@@ -149,14 +149,29 @@
                 SqlCommand comando = new SqlCommand();
                 comando.CommandType = CommandType.Text;
                 comando.CommandText =
-                   string.Format("SELECT * FROM  Question WHERE id_question = {0}",
+                   string.Format("SELECT * FROM  Student WHERE id_question = {0}",
                                   id
                                    );
-                comando.Connection = ConnectionDB.CreateConnection();
 
+                comando.Connection = ConnectionDB.CreateConnection();
                 comando.Connection.Open();
-                comando.ExecuteNonQuery();
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                if (!reader.Read())
+                {
+                    return null;
+                }
+
+                Question question= new Question(
+                        (int)reader["id_question"],
+                        (string)reader["questionContent"],
+                        (string)reader["feedbackContent"],
+                        AlternativeDB.Instance.GetById((int)reader["rightAlternative"])
+                        );
+
                 comando.Connection.Close();
+                return question;
 
             }
             catch (SqlException e)
@@ -164,7 +179,6 @@
                 throw new DAOException(e);
             }
 
-            return null;
         }
     }
 }
