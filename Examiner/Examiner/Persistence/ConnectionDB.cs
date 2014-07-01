@@ -8,8 +8,6 @@ namespace Examiner.Persistence
 
   public class ConnectionDB
   {
-    private SqlConnection connection = null;
-
     private static ConnectionDB instance = null;
 
     private ConnectionDB() { }
@@ -31,14 +29,7 @@ namespace Examiner.Persistence
     {
       get
       {
-
-        if (this.connection == null)
-        {
-          var connectionString = ConfigurationManager.ConnectionStrings["Examiner"];
-          connection = connectionString != null ? new SqlConnection(connectionString.ConnectionString) : null;
-        }
-
-        return connection;
+        return new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Persistence\DB\supernova.mdf;Integrated Security=True");
       }
     }
 

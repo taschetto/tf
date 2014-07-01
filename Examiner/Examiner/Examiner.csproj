@@ -38,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,7 +100,6 @@
     <Compile Include="Business\DAOs\IStudentDAO.cs" />
     <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
     <Compile Include="Business\Exceptions\DAOException.cs" />
-    <Compile Include="Business\Models\User.cs" />
     <Compile Include="Persistence\AnswerDB.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />
     <Compile Include="Persistence\StudentDB.cs" />

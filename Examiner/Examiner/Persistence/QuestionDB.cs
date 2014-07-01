@@ -40,38 +40,55 @@
       }
     }
 
-    public void Add(Question t)
+    public bool Add(Question t)
     {
-      string sql = string.Format("INSERT [Question] (questionContent, feedbackContent, rightAlternative) VALUES('{0}','{1}','{2}')",
+      string sql = string.Format(
+        "INSERT [Question] (questionContent, feedbackContent, " +
+        "alternative1, alternative2, alternative3, alternative4, alternative5, rightAlternative) " +
+        " VALUES('{0}','{1}','{2}', '{3}', '{4}', '{5}', '{6}', {7})",
         t.QuestionContent,
         t.FeedbackContent,
+        t.Alternatives[0],
+        t.Alternatives[1],
+        t.Alternatives[2],
+        t.Alternatives[3],
+        t.Alternatives[4],
         t.RightAlternative);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Update(Question t)
+    public bool Update(Question t)
     {
-      string sql = string.Format("UPDATE [Question] SET questionContent = {0}, feedbackContent = {1}, rightAlternative= {2}) WHERE = {3}",
+      string sql = string.Format(
+        "UPDATE [Question] SET " +
+        "questionContent = '{0}', feedbackContent = '{1}', " +
+        "alternative1 = '{2}', alternative2 = '{3}', alternative3 = '{4}', alternative4 = '{5}', alternative5 = '{6}', " +
+        "rightAlternative= {7}) WHERE id = {8}",
         t.QuestionContent,
         t.FeedbackContent,
+        t.Alternatives[0],
+        t.Alternatives[1],
+        t.Alternatives[2],
+        t.Alternatives[3],
+        t.Alternatives[4],
         t.RightAlternative,
         t.Id);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Delete(Question t)
+    public bool Delete(Question t)
     {
       string sql = string.Format("DELETE FROM [Question] WHERE id = {0}", t.Id);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     public List<Question> GetAll()
     {
       var questions = new List<Question>();
-      string sql = "select * from Question";
+      string sql = "select * from [Question]";
       var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
 
       foreach (DataRow row in dataTable.Rows)

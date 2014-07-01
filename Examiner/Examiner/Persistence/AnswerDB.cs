@@ -3,6 +3,8 @@
   using System;
   using Examiner.Business.Models;
   using Examiner.Business.DAOs;
+  using System.Data;
+  using System.Collections.Generic;
 
   public class AnswerDB : IAnswerDao
   {
@@ -21,29 +23,66 @@
       }
     }
 
-    public void Add(Answer t)
+    private Answer ToAnswer(DataRow row)
     {
-      throw new NotImplementedException();
+      var studentExam = StudentExamDB.Instance.GetById((int)row["id_studentexam"]);
+      var question = QuestionDB.Instance.GetById((int)row["id_question"]);
+
+      return new Answer(
+        (int)row["id"],
+        studentExam,
+        question,
+        (int)row["alternative"]);
     }
 
-    public void Update(Answer t)
+    public bool Add(Answer t)
     {
-      throw new NotImplementedException();
+      string sql = string.Format("INSERT [Answer] (id_question, id_studentexam, alternative) VALUES({0}, {1}, {2})",
+        t.Question.Id,
+        t.StudentExam.Id,
+        t.Alternative);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Delete(Answer t)
+    public bool Update(Answer t)
     {
-      throw new NotImplementedException();
+      // Não é possível dar update em um Answer! Uma vez respondida, está feito.
+      throw new NotSupportedException();
     }
 
-    public System.Collections.Generic.List<Answer> GetAll()
+    public bool Delete(Answer t)
     {
-      throw new NotImplementedException();
+      string sql = string.Format("DELETE FROM [Answer] WHERE id = {0}", t.Id);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+    }
+
+    public List<Answer> GetAll()
+    {
+      var answers = new List<Answer>();
+      string sql = "select * from [Answer]";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        answers.Add(ToAnswer(row));
+      }
+
+      return answers;
     }
 
     public Answer GetById(int id)
     {
-      throw new NotImplementedException();
+      string sql = string.Format("SELECT * FROM [Answer] WHERE id = {0}", id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        return ToAnswer(row);
+      }
+
+      return null;
     }
   }
 }

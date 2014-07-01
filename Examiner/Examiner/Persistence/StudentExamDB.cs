@@ -2,6 +2,7 @@
 {
   using System;
   using System.Collections.Generic;
+  using System.Data;
   using Examiner.Business.DAOs;
   using Examiner.Business.Models;
 
@@ -20,29 +21,92 @@
         return instance;
       }
     }
-    public void Add(StudentExam t)
+
+    private StudentExam ToStudentExam(DataRow row)
     {
-      throw new NotImplementedException();
+      Student student = StudentDB.Instance.GetById((int)row["id_student"]);
+      Exam exam = ExamDB.Instance.GetById((int)row["id_exam"]);
+      return new StudentExam(
+        (int)row["id"],
+        student,
+        exam);
     }
 
-    public void Update(StudentExam t)
+    public bool Add(StudentExam t)
     {
-      throw new NotImplementedException();
+      string sql = string.Format("INSERT [StudentExam] (id_student, id_exam) VALUES({0}, {1})",
+        t.Student.Id,
+        t.Exam.Id);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Delete(StudentExam t)
+    public bool Update(StudentExam t)
     {
-      throw new NotImplementedException();
+      // Não é possível dar update em um StudentExam pois ele só possui chaves para relacionamento!
+      throw new NotSupportedException();
+    }
+
+    public bool Delete(StudentExam t)
+    {
+      string sql = string.Format("DELETE FROM [StudentExam] WHERE id = {0}", t.Id);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     public List<StudentExam> GetAll()
     {
-      throw new NotImplementedException();
+      var studentExams = new List<StudentExam>();
+      string sql = "select * from [StudentExam]";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        studentExams.Add(ToStudentExam(row));
+      }
+
+      return studentExams;
     }
 
     public StudentExam GetById(int id)
     {
-      throw new NotImplementedException();
+      string sql = string.Format("SELECT * FROM [StudentExam] WHERE id = {0}", id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        return ToStudentExam(row);
+      }
+
+      return null;
+    }
+
+    public List<StudentExam> GetByStudent(Student student)
+    {
+      var studentExams = new List<StudentExam>();
+      string sql = string.Format("select * from [StudentExam] where id_student = {0}", student.Id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        studentExams.Add(ToStudentExam(row));
+      }
+
+      return studentExams;
+    }
+
+    public List<StudentExam> GetByExam(Exam exam)
+    {
+      var studentExams = new List<StudentExam>();
+      string sql = string.Format("select * from [StudentExam] where id_exam = {0}", exam.Id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        studentExams.Add(ToStudentExam(row));
+      }
+
+      return studentExams;
     }
   }
 }

@@ -2,14 +2,11 @@
 {
   using System;
   using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
 
   public class Exam : BaseModel
   {
-    private List<Category> _categories;
-    private List<StudentExam> _studentExams;
+    private List<Category> categories;
+    private List<StudentExam> studentExams;
 
     public Exam(int id, int questionCount, bool open, string accessCode)
       : base(id)
@@ -29,12 +26,12 @@
     {
       get
       {
-        if (this._categories == null)
+        if (this.categories == null)
         {
-          this._categories = new List<Category>();
+          this.categories = new List<Category>();
         }
 
-        return this._categories;
+        return this.categories;
       }
     }
 
@@ -42,12 +39,12 @@
     {
       get
       {
-        if (this._studentExams == null)
+        if (this.studentExams == null)
         {
-          this._studentExams = new List<StudentExam>();
+          this.studentExams = new List<StudentExam>();
         }
 
-        return this._studentExams;
+        return this.studentExams;
       }
     }
 
@@ -69,7 +66,12 @@
 
     public override string ToString()
     {
-      return "Exam{Id=" + this.Id + ", QuestionCount=" + this.QuestionCount + ", Open=" + this.Open + ", AccessCode=" + this.AccessCode + ", Categories=" + this.Categories + ", StudentExams=" + this.StudentExams + '}';
+      return "Exam{Id=" + this.Id + ", QuestionCount=" + this.QuestionCount + ", Open=" + this.Open + ", AccessCode=" + this.AccessCode + ", Categories=" + this.Categories.Count + ", StudentExams=" + this.StudentExams.Count + '}';
+    }
+
+    public int CompareTo(Exam other)
+    {
+      return this.Id.CompareTo(other.Id);
     }
   }
 }

@@ -11,7 +11,24 @@
 
     public override string ToString()
     {
-      return "BaseModel{id=" + this.Id + "}";
+      return "BaseModel{Id=" + this.Id + "}";
+    }
+
+    public override bool Equals(object obj)
+    {
+      if (obj == null)
+        return false;
+
+      BaseModel b = obj as BaseModel;
+      if (b == null)
+        return false;
+      
+      return this.Id.Equals(b.Id);
+    }
+
+    public override int GetHashCode()
+    {
+      return base.GetHashCode();
     }
   }
 }

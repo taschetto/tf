@@ -1,10 +1,6 @@
 ﻿namespace Examiner.Business.Models
 {
-  using System;
   using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
 
   public class Question : BaseModel
   {
@@ -63,7 +59,7 @@
 
     public override string ToString()
     {
-      return "Question{Id=" + this.Id + ", QuestionContent=" + this.QuestionContent + ", FeedbackContent=" + this.FeedbackContent + ", Alternatives=" + this.Alternatives + ", RightAlternative=" + this.RightAlternative + ", Categories=" + this.Categories + ", Answers=" + this.Answers + '}';
+      return "Question{Id=" + this.Id + ", QuestionContent=" + this.QuestionContent + ", FeedbackContent=" + this.FeedbackContent + ", Alternatives=" + this.Alternatives + ", RightAlternative=" + this.RightAlternative + ", Categories=" + this.Categories.Count + ", Answers=" + this.Answers.Count + '}';
     }
   }
 }

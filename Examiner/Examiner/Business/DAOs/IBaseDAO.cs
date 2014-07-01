@@ -4,11 +4,11 @@ namespace Examiner.Business.DAOs
 {
     public interface IBaseDao<T>
   {
-    void Add(T t);
+    bool Add(T t);
 
-    void Update(T t);
+    bool Update(T t);
 
-    void Delete(T t);
+    bool Delete(T t);
 
     List<T> GetAll();
 

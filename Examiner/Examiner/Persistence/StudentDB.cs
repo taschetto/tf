@@ -32,7 +32,7 @@
         (string)row["email"]);
     }
 
-    public void Add(Student t)
+    public bool Add(Student t)
     {
       string sql = string.Format("INSERT [Student] (registration, password, name, email) VALUES('{0}','{1}','{2}','{3})",
         t.Registration,
@@ -40,32 +40,32 @@
         t.Name,
         t.Email);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Update(Student t)
+    public bool Update(Student t)
     {
-      string sql = string.Format("UPDATE [Student] set registration = {0}, password = {1}, name = {2}, email ={3} WHERE id_student = {4} ",
+      string sql = string.Format("UPDATE [Student] set registration = '{0}', password = '{1}', name = '{2}', email = '{3}' WHERE id = {4} ",
         t.Registration,
         t.Password,
         t.Name,
         t.Email,
         t.Id);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Delete(Student t)
+    public bool Delete(Student t)
     {
       string sql = string.Format("DELETE FROM [Student] WHERE id = {0} ", t.Id);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     public List<Student> GetAll()
     {
       List<Student> students = new List<Student>();
-      string sql = "select * from Student";
+      string sql = "select * from [Student]";
       var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
 
       foreach (DataRow row in dataTable.Rows)

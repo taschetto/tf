@@ -58,7 +58,7 @@
 
     public override string ToString()
     {
-      return "Category{Id" + this.Id + ", Name=" + this.Name + ", Description=" + this.Description + ", Exams=" + this.Exams + ", Questions=" + this.Questions + '}';
+      return "Category{Id" + this.Id + ", Name=" + this.Name + ", Description=" + this.Description + ", Exams=" + this.Exams.Count + ", Questions=" + this.Questions.Count + '}';
     }
   }
 }

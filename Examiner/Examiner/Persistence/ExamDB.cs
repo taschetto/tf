@@ -27,42 +27,42 @@
       return new Exam(
         (int)row["id"],
         (int)row["questionCount"],
-        (bool)row["open"],
+        ((string)row["open"]).Equals("1"),
         (string)row["accessCode"]);
     }
 
-    public void Add(Exam t)
+    public bool Add(Exam t)
     {
-      string sql = string.Format("INSERT [Student] (questionCount, open, accessCode) VALUES('{0}','{1}','{2}','{3})",
+      string sql = string.Format("INSERT [Exam] (questionCount, [open], accessCode) VALUES({0}, '{1}', '{2}')",
         t.QuestionCount,
-        t.Open,
+        t.Open ? 1 : 0,
         t.AccessCode);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Update(Exam t)
+    public bool Update(Exam t)
     {
-      string sql = string.Format("UPDATE [Student] SET questionCount= {0}, open= {1}, accessCode= {2} WHERE id_exam = {3}",
+      string sql = string.Format("UPDATE [Exam] SET questionCount = {0}, [open] = '{1}', accessCode = '{2}' WHERE id = {3}",
             t.QuestionCount,
-            t.Open,
+            t.Open ? 1 : 0,
             t.AccessCode,
             t.Id);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Delete(Exam t)
+    public bool Delete(Exam t)
     {
-      string sql = string.Format("DELETE FROM [Student] WHERE id_exam = {0}", t.Id);
+      string sql = string.Format("DELETE FROM [Exam] WHERE id = {0}", t.Id);
 
-      ConnectionDB.Instance.ExecuteNonQuery(sql);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     public List<Exam> GetAll()
     {
       var exams = new List<Exam>();
-      string sql = "select * from Exam";
+      string sql = "select * from [Exam]";
       var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
 
       foreach (DataRow row in dataTable.Rows)

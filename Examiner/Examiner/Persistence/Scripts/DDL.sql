@@ -51,10 +51,8 @@ CREATE TABLE StudentExam (
 );
 
 CREATE TABLE Answer (
+  id INTEGER PRIMARY KEY IDENTITY,
   id_question INTEGER NOT NULL REFERENCES Question,
-  id_studentexam_student INTEGER NOT NULL,
-  id_studentexam_exam INTEGER NOT NULL,
-  "alternative" INTEGER NOT NULL,
-  PRIMARY KEY (id_question, id_studentexam_student, id_studentexam_exam),
-  FOREIGN KEY (id_studentexam_student, id_studentexam_exam) REFERENCES StudentExam (id_student, id_exam)
+  id_studentexam INTEGER NOT NULL REFERENCES StudentExam,
+  alternative INTEGER NOT NULL
 );

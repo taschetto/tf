@@ -2,6 +2,7 @@
 {
   using System;
   using System.Collections.Generic;
+  using System.Data;
   using Examiner.Business.DAOs;
   using Examiner.Business.Models;
 
@@ -22,29 +23,70 @@
       }
     }
 
-    public void Add(Category t)
+    private Category ToCategory(DataRow row)
     {
-      throw new NotImplementedException();
+      return new Category(
+        (int)row["id"],
+        (string)row["name"],
+        (string)row["description"]);
     }
 
-    public void Update(Category t)
+    public bool Add(Category t)
     {
-      throw new NotImplementedException();
+      string sql = string.Format(
+        "INSERT [Category] (name, description) " +
+        " VALUES('{0}','{1}')",
+        t.Name,
+        t.Description);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
-    public void Delete(Category t)
+    public bool Update(Category t)
     {
-      throw new NotImplementedException();
+      string sql = string.Format(
+        "UPDATE [Category] SET " +
+        "name = '{0}', description = '{1}' " +
+        "WHERE id = {8}",
+        t.Name,
+        t.Description,
+        t.Id);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+    }
+
+    public bool Delete(Category t)
+    {
+      string sql = string.Format("DELETE FROM [Category] WHERE id = {0}", t.Id);
+
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     public List<Category> GetAll()
     {
-      throw new NotImplementedException();
+      var categories = new List<Category>();
+      string sql = "select * from [Category]";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        categories.Add(ToCategory(row));
+      }
+
+      return categories;
     }
 
     public Category GetById(int id)
     {
-      throw new NotImplementedException();
+      string sql = string.Format("SELECT * FROM [Category] WHERE id = {0}", id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        return ToCategory(row);
+      }
+
+      return null;
     }
   }
 }

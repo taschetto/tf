@@ -1,10 +1,6 @@
 ﻿namespace Examiner.Business.Models
 {
-  using System;
   using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
   public class StudentExam : BaseModel
   {
     private List<Answer> _answers;
@@ -38,7 +34,7 @@
 
     public override string ToString()
     {
-      return "StudentExam{Id=" + this.Id + ", Student=" + this.Student + ", Exam=" + this.Exam + ", Answers=" + this.Answers + '}';
+      return "StudentExam{Id=" + this.Id + ", Student=" + this.Student + ", Exam=" + this.Exam + ", Answers=" + this.Answers.Count + '}';
     }
   }
 }
