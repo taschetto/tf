@@ -9,10 +9,9 @@
   public class Question : BaseModel
   {
     private List<Category> _categories;
-    private List<Alternative> _alternatives;
     private List<Answer> _answers;
 
-    public Question(int id, string questionContent, string feedbackContent, Alternative rightAlternative)
+    public Question(int id, string questionContent, string feedbackContent, string[] alternatives, int rightAlternative)
       : base(id)
     {
       this.QuestionContent = questionContent;
@@ -24,7 +23,9 @@
 
     public string FeedbackContent { get; set; }
 
-    public Alternative RightAlternative { get; set; } 
+    public string[] Alternatives { get; set; }
+
+    public int RightAlternative { get; set; } 
 
     public List<Category> Categories
     {
@@ -32,15 +33,6 @@
       {
         this._categories = this._categories ?? new List<Category>();
         return this._categories;
-      }
-    }
-
-    public List<Alternative> Alternatives
-    {
-      get
-      {
-        this._alternatives = this._alternatives ?? new List<Alternative>();
-        return this._alternatives;
       }
     }
 
@@ -61,14 +53,6 @@
       }
     }
 
-    public void AddAlternative(Alternative alternative)
-    {
-      if (!this.Alternatives.Contains(alternative))
-      {
-        this.Alternatives.Add(alternative);
-      }
-    }
-
     public void AddAnswer(Answer answer)
     {
       if (!this.Answers.Contains(answer))
@@ -79,7 +63,7 @@
 
     public override string ToString()
     {
-      return "Question{Id=" + this.Id + ", QuestionContent=" + this.QuestionContent + ", FeedbackContent=" + this.FeedbackContent + ", RightAlternative=" + this.RightAlternative + ", Categories=" + this.Categories + ", Alternatives=" + this.Alternatives + ", Answers=" + this.Answers + '}';
+      return "Question{Id=" + this.Id + ", QuestionContent=" + this.QuestionContent + ", FeedbackContent=" + this.FeedbackContent + ", Alternatives=" + this.Alternatives + ", RightAlternative=" + this.RightAlternative + ", Categories=" + this.Categories + ", Answers=" + this.Answers + '}';
     }
   }
 }

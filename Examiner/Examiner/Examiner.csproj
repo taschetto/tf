@@ -94,14 +94,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Business\DAOs\IAlternativeDAO.cs" />
     <Compile Include="Business\DAOs\IAnswerDAO.cs" />
     <Compile Include="Business\DAOs\IBaseDAO.cs" />
     <Compile Include="Business\DAOs\IStudentDAO.cs" />
     <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
     <Compile Include="Business\Exceptions\DAOException.cs" />
     <Compile Include="Business\Models\User.cs" />
-    <Compile Include="Persistence\AlternativeDB.cs" />
     <Compile Include="Persistence\AnswerDB.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />
     <Compile Include="Persistence\StudentDB.cs" />
@@ -143,7 +141,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Business\Models\Alternative.cs" />
     <Compile Include="Business\Models\Answer.cs" />
     <Compile Include="Business\Models\BaseModel.cs" />
     <Compile Include="Business\Models\Category.cs" />
@@ -251,7 +248,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>supernova.mdf</DependentUpon>
     </Content>
-    <Content Include="Persistence\SCRIPTSDDL\DDL.sql" />
+    <Content Include="Persistence\Scripts\DDL.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

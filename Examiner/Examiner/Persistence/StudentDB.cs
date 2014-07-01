@@ -1,183 +1,92 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using Examiner.Business.DAOs;
-using Examiner.Business.Exceptions;
-using Examiner.Business.Models;
-
-namespace Examiner.Persistence
+﻿namespace Examiner.Persistence
 {
+  using System.Collections.Generic;
+  using System.Data;
+  using Examiner.Business.DAOs;
+  using Examiner.Business.Models;
 
+  public class StudentDB : IStudentDao
+  {
+    private static StudentDB instance = null;
 
-    public class StudentDB : IStudentDao
+    public static StudentDB Instance
     {
-        private static StudentDB _referenceStudentDb = null;
-
-        public static StudentDB Instance()
+      get
+      {
+        if (instance == null)
         {
-            if (_referenceStudentDb == null)
-            {
-                _referenceStudentDb = new StudentDB();
-            }
-            return (_referenceStudentDb);
+          instance = new StudentDB();
         }
 
-        public void Add(Student t)
-        {
-            try
-            {
-                SqlCommand comando = new SqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText =
-                    string.Format("INSERT [Student] (registration, password, name, email) " +
-                                  "VALUES('{0}','{1}','{2}','{3})",
-                                    t.Registration,
-                                    t.Password,
-                                    t.Name,
-                                    t.Email
-                                    );
-
-                comando.Connection = ConnectionDB.CreateConnection();
-
-                comando.Connection.Open();
-                comando.ExecuteNonQuery();
-                comando.Connection.Close();
-            }
-            catch (SqlException e)
-            {
-                throw new DAOException(e);
-            }
-        }
-
-        public void Update(Student t)
-        {
-            try
-            {
-                SqlCommand comando = new SqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText =
-                    string.Format("UPDATE [Student] set registration = {0}, password = {1}, name = {2}, email ={3} WHERE id_student = {4} ",
-                                    t.Registration,
-                                    t.Password,
-                                    t.Name,
-                                    t.Email,
-                                    t.Id
-                                    );
-
-                comando.Connection = ConnectionDB.CreateConnection();
-
-                comando.Connection.Open();
-                comando.ExecuteNonQuery();
-                comando.Connection.Close();
-            }
-            catch (SqlException e)
-            {
-                throw new DAOException(e);
-            }
-        }
-
-        public void Delete(Student t)
-        {
-            try
-            {
-                SqlCommand comando = new SqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText =
-                    string.Format("DELETE FROM [Student]  WHERE id_student = {0} ",
-                                    t.Id
-                                    );
-
-                comando.Connection = ConnectionDB.CreateConnection();
-
-                comando.Connection.Open();
-                comando.ExecuteNonQuery();
-                comando.Connection.Close();
-            }
-            catch (SqlException e)
-            {
-                throw new DAOException(e);
-            }
-        }
-
-        public List<Student> GetAll()
-        {
-            try
-            {
-                SqlCommand comando = new SqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText =string.Format("select * from Student");
-
-                comando.Connection = ConnectionDB.CreateConnection();
-                SqlDataAdapter adpter = new SqlDataAdapter(comando);
-                DataTable table = new DataTable();
-                adpter.Fill(table);
-
-                List<Student> students = new List<Student>();
-
-                if (table.Rows.Count == 0)
-                {
-                    return null;
-                }
-
-                for (int i = 0; i < table.Rows.Count; i++)
-                {
-                    Student student = new Student(
-                        (int)table.Rows[i][0],
-                        (string)table.Rows[i][1],
-                        (string)table.Rows[i][2],
-                        (string)table.Rows[i][3],
-                        (string)table.Rows[i][4]
-
-                        );
-                    students.Add(student);
-                }
-
-                return students;
-            }
-            catch (SqlException e)
-            {
-                throw new DAOException(e);
-            }
-        }
-
-        public Student GetById(int id)
-        {
-            try
-            {
-                SqlCommand comando = new SqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText =
-                   string.Format("SELECT * FROM  Student WHERE id_question = {0}",
-                                  id
-                                   );
-
-                comando.Connection = ConnectionDB.CreateConnection();
-                comando.Connection.Open();
-
-                SqlDataReader reader = comando.ExecuteReader();
-
-                if (!reader.Read())
-                {
-                    return null;
-                }
-
-                Student student= new Student(
-                        (int)reader["id_student"],
-                        (string)reader["registration"],
-                        (string)reader["password"],
-                        (string)reader["name"],
-                        (string)reader["email"]
-                        );
-
-
-                comando.Connection.Close();
-                return student;
-
-            }
-            catch (SqlException e)
-            {
-                throw new DAOException(e);
-            }
-        }
+        return instance;
+      }
     }
+
+    private Student ToStudent(DataRow row)
+    {
+      return new Student(
+        (int)row["id"],
+        (string)row["registration"],
+        (string)row["password"],
+        (string)row["name"],
+        (string)row["email"]);
+    }
+
+    public void Add(Student t)
+    {
+      string sql = string.Format("INSERT [Student] (registration, password, name, email) VALUES('{0}','{1}','{2}','{3})",
+        t.Registration,
+        t.Password,
+        t.Name,
+        t.Email);
+
+      ConnectionDB.Instance.ExecuteNonQuery(sql);
+    }
+
+    public void Update(Student t)
+    {
+      string sql = string.Format("UPDATE [Student] set registration = {0}, password = {1}, name = {2}, email ={3} WHERE id_student = {4} ",
+        t.Registration,
+        t.Password,
+        t.Name,
+        t.Email,
+        t.Id);
+
+      ConnectionDB.Instance.ExecuteNonQuery(sql);
+    }
+
+    public void Delete(Student t)
+    {
+      string sql = string.Format("DELETE FROM [Student] WHERE id = {0} ", t.Id);
+
+      ConnectionDB.Instance.ExecuteNonQuery(sql);
+    }
+
+    public List<Student> GetAll()
+    {
+      List<Student> students = new List<Student>();
+      string sql = "select * from Student";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        students.Add(ToStudent(row));
+      }
+
+      return students;
+    }
+
+    public Student GetById(int id)
+    {
+      string sql = string.Format("SELECT * FROM [Student] WHERE id = {0}", id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        return ToStudent(row);
+      }
+
+      return null;
+    }
+  }
 }
