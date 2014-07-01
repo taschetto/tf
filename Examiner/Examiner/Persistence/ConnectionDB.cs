@@ -9,7 +9,7 @@ namespace Examiner.Persistence
         {
             var conexao =
                 new SqlConnection(
-                    @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Gabriel\Documents\GitHub\tf\Examiner\Examiner\supernova.mdf;Integrated Security=True;Context Connection=False");
+                    @"Data Source=(LocalDB)\v11.0;AttachDbFilename=Persistence\DB\supernova.mdf;Integrated Security=True;Context Connection=False");
 
             return conexao;
         }
