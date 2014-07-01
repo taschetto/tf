@@ -1,6 +1,7 @@
 ﻿namespace Examiner.Presentation.ViewModels
 {
   using System.Collections.ObjectModel;
+  using Examiner.Business;
   using Examiner.Business.Models;
 
   public class ExamListViewModel : ViewModelBase

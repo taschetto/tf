@@ -184,7 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DAOs\IExamDAO.cs" />
-    <Compile Include="Business\Models\ExaminerFacade.cs" />
+    <Compile Include="Business\ExaminerFacade.cs" />
     <Compile Include="Business\DAOs\IQuestionDAO.cs" />
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />

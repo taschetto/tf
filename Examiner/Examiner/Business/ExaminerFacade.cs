@@ -1,4 +1,4 @@
-﻿namespace Examiner.Business.Models
+﻿namespace Examiner.Business
 {
   using System;
   using System.Collections.Generic;
