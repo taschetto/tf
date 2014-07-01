@@ -3,15 +3,14 @@
 
 namespace Examiner.Persistence
 {
-    class ConnectionDB
+  using System.Configuration;
+  class ConnectionDB
+  {
+    public static SqlConnection CreateConnection()
     {
-        public static SqlConnection CreateConnection()
-        {
-            var conexao =
-                new SqlConnection(
-                    @"Data Source=(LocalDB)\v11.0;AttachDbFilename=Persistence\DB\supernova.mdf;Integrated Security=True;Context Connection=False");
-
-            return conexao;
-        }
+      var connectionString = ConfigurationManager.ConnectionStrings["Examiner"];
+      var connection = connectionString != null ? new SqlConnection(connectionString.ConnectionString) : null;
+      return connection;
     }
+  }
 }
