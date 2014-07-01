@@ -8,11 +8,11 @@ namespace Examiner.Business.Exceptions
 {
   public class DAOException : Exception
   {
-    private Exception baseException;
-
     public DAOException(Exception e)
     {
-      this.baseException = e;
+      this.BaseException = e;
     }
+
+    public Exception BaseException { get; set; }
   }
 }
