@@ -24,11 +24,15 @@
 
     private Exam ToExam(DataRow row)
     {
-      return new Exam(
+      var exam = new Exam(
         (int)row["id"],
         (int)row["questionCount"],
         ((string)row["open"]).Equals("1"),
         (string)row["accessCode"]);
+        
+      exam.Categories = CategoryDB.Instance.GetByExam(exam);
+
+      return exam;
     }
 
     public bool Add(Exam t)
@@ -38,7 +42,32 @@
         t.Open ? 1 : 0,
         t.AccessCode);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      if (t.Categories.Count > 0)
+        return this.SetCategories(t);
+
+      return true;
+    }
+
+    private bool SetCategories(Exam t)
+    {
+      string sql = string.Format("DELETE [CategoryExam] where id_exam = {0}", t.Id);
+      ConnectionDB.Instance.ExecuteNonQuery(sql);
+
+      foreach (var category in t.Categories)
+      {
+        sql = string.Format("INSERT [CategoryExam] (id_exam, id_category) VALUES({0}, {1})",
+          t.Id,
+          category.Id);
+
+        ConnectionDB.Instance.ExecuteNonQuery(sql);
+      }
+
+      return true;
     }
 
     public bool Update(Exam t)
@@ -49,7 +78,15 @@
             t.AccessCode,
             t.Id);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      if (t.Categories.Count > 0)
+        return this.SetCategories(t);
+
+      return true;
     }
 
     public bool Delete(Exam t)

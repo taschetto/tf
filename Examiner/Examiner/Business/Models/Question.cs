@@ -4,14 +4,15 @@
 
   public class Question : BaseModel
   {
-    private List<Category> _categories;
-    private List<Answer> _answers;
+    private List<Category> categories;
+    private List<Answer> answers;
 
     public Question(int id, string questionContent, string feedbackContent, string[] alternatives, int rightAlternative)
       : base(id)
     {
       this.QuestionContent = questionContent;
       this.FeedbackContent = feedbackContent;
+      this.Alternatives = alternatives;
       this.RightAlternative = rightAlternative;
     }
 
@@ -27,17 +28,13 @@
     {
       get
       {
-        this._categories = this._categories ?? new List<Category>();
-        return this._categories;
+        this.categories = this.categories ?? new List<Category>();
+        return this.categories;
       }
-    }
 
-    public List<Answer> Answers
-    {
-      get
+      set
       {
-        this._answers = this._answers ?? new List<Answer>();
-        return this._answers;
+        this.categories = value;
       }
     }
 
@@ -49,11 +46,17 @@
       }
     }
 
-    public void AddAnswer(Answer answer)
+    public List<Answer> Answers
     {
-      if (!this.Answers.Contains(answer))
+      get
       {
-        this.Answers.Add(answer);
+        this.answers = this.answers ?? new List<Answer>();
+        return this.answers;
+      }
+
+      set
+      {
+        this.answers = value;
       }
     }
 

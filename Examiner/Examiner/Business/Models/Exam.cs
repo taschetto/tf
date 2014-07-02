@@ -33,6 +33,11 @@
 
         return this.categories;
       }
+
+      set
+      {
+        this.categories = value;
+      }
     }
 
     public List<StudentExam> StudentExams

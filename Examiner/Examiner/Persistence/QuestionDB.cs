@@ -20,12 +20,16 @@
           (string)row["alternative5"]
         };
 
-      return new Question(
+      var question = new Question(
         (int)row["id"],
         (string)row["questionContent"],
         (string)row["feedbackContent"], 
         alternatives,
         (int)row["rightAlternative"]);
+
+      question.Categories = CategoryDB.Instance.GetByQuestion(question);
+
+      return question;
     }
 
     public static QuestionDB Instance
@@ -55,16 +59,40 @@
         t.Alternatives[4],
         t.RightAlternative);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      if (t.Categories.Count > 0)
+        return this.SetCategories(t);
+
+      return true;
+    }
+
+    private bool SetCategories(Question t)
+    {
+      string sql = string.Format("DELETE [CategoryQuestion] where id_question = {0}", t.Id);
+      ConnectionDB.Instance.ExecuteNonQuery(sql);
+
+      foreach (var category in t.Categories)
+      {
+        sql = string.Format("INSERT [CategoryQuestion] (id_question, id_category) VALUES({0}, {1})",
+          t.Id,
+          category.Id);
+
+        ConnectionDB.Instance.ExecuteNonQuery(sql);
+      }
+
+      return true;
     }
 
     public bool Update(Question t)
     {
       string sql = string.Format(
-        "UPDATE [Question] SET " +
-        "questionContent = '{0}', feedbackContent = '{1}', " +
-        "alternative1 = '{2}', alternative2 = '{3}', alternative3 = '{4}', alternative4 = '{5}', alternative5 = '{6}', " +
-        "rightAlternative= {7}) WHERE id = {8}",
+        "UPDATE [Question] SET questionContent = '{0}', feedbackContent = '{1}', " +
+        "alternative1 = '{2}', alternative2 = '{3}', alternative3 = '{4}', alternative4 = '{5}', alternative5 = '{6}', rightAlternative = {7} " +
+        "WHERE id = {8}",
         t.QuestionContent,
         t.FeedbackContent,
         t.Alternatives[0],
@@ -75,7 +103,15 @@
         t.RightAlternative,
         t.Id);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      if (t.Categories.Count > 0)
+        return this.SetCategories(t);
+
+      return true;
     }
 
     public bool Delete(Question t)

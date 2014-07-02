@@ -6,9 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid>
-  <DataGrid Margin="10,10,10,37" ItemsSource="{Binding Exams, UpdateSourceTrigger=PropertyChanged}"/>
-  <Button Content="Novo" HorizontalAlignment="Right" Margin="0,0,170,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
-    <Button Content="Editar" HorizontalAlignment="Right" Margin="0,0,90,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
-    <Button Content="Remover" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom"/>
+    <DataGrid ItemsSource="{Binding Exams}" SelectedItem="{Binding SelectedExam, Mode=TwoWay}" IsReadOnly="True" Margin="10,10,10,37" />
+    <Button Command="{Binding Create}" Content="Novo" HorizontalAlignment="Right" Margin="0,0,170,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
+    <Button Command="{Binding Update}" Content="Editar" HorizontalAlignment="Right" Margin="0,0,90,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
+    <Button Command="{Binding Delete}" Content="Remover" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom"/>
   </Grid>
 </UserControl>

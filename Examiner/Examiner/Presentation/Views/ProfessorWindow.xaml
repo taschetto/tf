@@ -17,9 +17,6 @@
     </DataTemplate>    
   </Window.Resources>
   <Grid Margin="10">
-    <TabControl ItemsSource="{Binding ViewModelCollection}" DisplayMemberPath="DisplayName" Padding="10" Margin="0,0,0,27"/>
-    <Button Command="{Binding OkCommand}" Content="OK" IsDefault="True" Margin="0,0,160,0" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom" Grid.Column="1"/>
-    <Button Command="{Binding CancelCommand}" Content="Cancel" IsCancel="True" Margin="0,0,80,0" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom" Grid.Column="1"/>
-    <Button Command="{Binding ApplyCommand}" Content="Apply" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom" RenderTransformOrigin="0.587,6.091" Grid.Column="1"/>
+    <TabControl SelectedIndex="0" ItemsSource="{Binding ViewModelCollection}" DisplayMemberPath="DisplayName" Padding="10" Margin="0,0,0,27"/>
   </Grid>
 </Window>

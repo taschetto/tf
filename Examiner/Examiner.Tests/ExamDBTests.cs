@@ -1,6 +1,5 @@
 ﻿namespace Examiner.Tests
 {
-  using System;
   using System.Linq;
   using Examiner.Business.Models;
   using Examiner.Persistence;

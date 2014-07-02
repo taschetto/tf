@@ -109,9 +109,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>supernova.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ViewModels\CheckListItem.cs" />
     <Compile Include="Presentation\ViewModels\CategoryListViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ExamListViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ExamViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\Operation.cs" />
     <Compile Include="Presentation\ViewModels\ProfessorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
@@ -121,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\CategoryView.xaml">
+    <Page Include="Presentation\Views\CategoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\ExamView.xaml">
+    <Page Include="Presentation\Views\ExamWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,14 +157,14 @@
     <Compile Include="Presentation\Views\CategoryListView.xaml.cs">
       <DependentUpon>CategoryListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\CategoryView.xaml.cs">
-      <DependentUpon>CategoryView.xaml</DependentUpon>
+    <Compile Include="Presentation\Views\CategoryWindow.xaml.cs">
+      <DependentUpon>CategoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\ExamListView.xaml.cs">
       <DependentUpon>ExamListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ExamView.xaml.cs">
-      <DependentUpon>ExamView.xaml</DependentUpon>
+    <Compile Include="Presentation\Views\ExamWindow.xaml.cs">
+      <DependentUpon>ExamWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -178,7 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\QuestionView.xaml">
+    <Page Include="Presentation\Views\QuestionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,8 +203,8 @@
     <Compile Include="Presentation\Views\QuestionListView.xaml.cs">
       <DependentUpon>QuestionListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\QuestionView.xaml.cs">
-      <DependentUpon>QuestionView.xaml</DependentUpon>
+    <Compile Include="Presentation\Views\QuestionWindow.xaml.cs">
+      <DependentUpon>QuestionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

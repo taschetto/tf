@@ -80,33 +80,5 @@
 
       return null;
     }
-
-    public List<StudentExam> GetByStudent(Student student)
-    {
-      var studentExams = new List<StudentExam>();
-      string sql = string.Format("select * from [StudentExam] where id_student = {0}", student.Id);
-      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
-
-      foreach (DataRow row in dataTable.Rows)
-      {
-        studentExams.Add(ToStudentExam(row));
-      }
-
-      return studentExams;
-    }
-
-    public List<StudentExam> GetByExam(Exam exam)
-    {
-      var studentExams = new List<StudentExam>();
-      string sql = string.Format("select * from [StudentExam] where id_exam = {0}", exam.Id);
-      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
-
-      foreach (DataRow row in dataTable.Rows)
-      {
-        studentExams.Add(ToStudentExam(row));
-      }
-
-      return studentExams;
-    }
   }
 }

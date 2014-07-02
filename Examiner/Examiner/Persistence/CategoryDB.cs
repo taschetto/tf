@@ -28,13 +28,13 @@
       return new Category(
         (int)row["id"],
         (string)row["name"],
-        (string)row["description"]);
+        (string)row["descript"]);
     }
 
     public bool Add(Category t)
     {
       string sql = string.Format(
-        "INSERT [Category] (name, description) " +
+        "INSERT [Category] (name, descript) " +
         " VALUES('{0}','{1}')",
         t.Name,
         t.Description);
@@ -46,8 +46,8 @@
     {
       string sql = string.Format(
         "UPDATE [Category] SET " +
-        "name = '{0}', description = '{1}' " +
-        "WHERE id = {8}",
+        "name = '{0}', descript = '{1}' " +
+        "WHERE id = {2}",
         t.Name,
         t.Description,
         t.Id);
@@ -87,6 +87,35 @@
       }
 
       return null;
+    }
+
+    public List<Category> GetByExam(Exam exam)
+    {
+      var categories = new List<Category>();
+      string sql = string.Format("select * from [Category] INNER JOIN [CategoryExam] ON [Category].id = [CategoryExam].id_category WHERE [CategoryExam].id_exam = {0}", exam.Id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        categories.Add(ToCategory(row));
+      }
+
+      return categories;
+    }
+
+
+    public List<Category> GetByQuestion(Question question)
+    {
+      var categories = new List<Category>();
+      string sql = string.Format("select * from [Category] INNER JOIN [CategoryQuestion] ON [Category].id = [CategoryQuestion].id_category WHERE [CategoryQuestion].id_question = {0}", question.Id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        categories.Add(ToCategory(row));
+      }
+
+      return categories;
     }
   }
 }
