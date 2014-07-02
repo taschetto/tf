@@ -7,15 +7,12 @@
   using System.Windows;
   using System.Windows.Input;
 
-  public class QuestionViewModel : ViewModelBase
+  public class QuestionViewModel : ModelViewModel<Question>
   {
-    private int id;
     private string questionContent;
     private string[] alternatives;
     private int rightAlternative;
     private string feedbackContent;
-    private ObservableCollection<CheckListItem<Category>> categories;
-    private bool isUpdate = false;
 
     private bool rightAlternative1 = true;
     private bool rightAlternative2 = false;
@@ -23,11 +20,13 @@
     private bool rightAlternative4 = false;
     private bool rightAlternative5 = false;
 
+    private ObservableCollection<CheckListItem<Category>> categories;
+
     public QuestionViewModel(Question question = null)
     {
-      this.categories = new ObservableCollection<CheckListItem<Category>>();
-      this.IsUpdate = false;
+      this.IsUpdate = question != null;
 
+      this.categories = new ObservableCollection<CheckListItem<Category>>();
       foreach (var category in ExaminerFacade.Instance.GetAll<Category>())
       {
         var item = new CheckListItem<Category>(category, category.Name, false);
@@ -36,12 +35,11 @@
 
       if (question != null)
       {
-        this.id = question.Id;
-        this.questionContent = question.QuestionContent;
+        this.Id = question.Id;
+        this.QuestionContent = question.QuestionContent;
         this.alternatives = question.Alternatives;
         this.RightAlternative = question.RightAlternative;
-        this.feedbackContent = question.FeedbackContent;
-        this.IsUpdate = true;
+        this.FeedbackContent = question.FeedbackContent;
 
         this.RightAlternative1 = this.rightAlternative == 0;
         this.RightAlternative2 = this.rightAlternative == 1;
@@ -61,33 +59,7 @@
       }
       else
       {
-        this.alternatives = new string[5];
-      }
-    }
-
-    public bool IsUpdate
-    {
-      get
-      {
-        return this.isUpdate;
-      }
-
-      set
-      {
-        Set<bool>("IsUpdate", ref this.isUpdate, value);
-      }
-    }
-
-    public int Id
-    {
-      get
-      {
-        return this.id;
-      }
-
-      set
-      {
-        Set<int>("Id", ref this.id, value);
+        this.alternatives = new string[5];   
       }
     }
 
@@ -278,27 +250,19 @@
       }
     }
 
-    public ICommand Save
+    public override Question Model
     {
       get
       {
-        return new RelayCommand<Window>((w) =>
+        Question question = new Question(this.Id, this.QuestionContent, this.FeedbackContent, this.alternatives, this.RightAlternative);
+
+        foreach (var item in this.categories)
         {
-          Question question = new Question(this.Id, this.QuestionContent, this.FeedbackContent, this.alternatives, this.RightAlternative);
+          if (item.IsChecked)
+            question.AddCategory(item.Model);
+        }
 
-          foreach (var item in this.categories)
-          {
-            if (item.IsChecked)
-              question.AddCategory(item.Model);
-          }
-
-          if (this.IsUpdate)
-            ExaminerFacade.Instance.Update(question);
-          else
-            ExaminerFacade.Instance.Add(question);
-
-          w.Close();
-        });
+        return question;
       }
     }
   }

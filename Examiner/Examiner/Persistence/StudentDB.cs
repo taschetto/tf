@@ -26,7 +26,7 @@
     {
       return new Student(
         (int)row["id"],
-        (string)row["registration"],
+        (int)row["registration"],
         (string)row["password"],
         (string)row["name"],
         (string)row["email"]);
@@ -34,7 +34,7 @@
 
     public bool Add(Student t)
     {
-      string sql = string.Format("INSERT [Student] (registration, password, name, email) VALUES('{0}','{1}','{2}','{3})",
+      string sql = string.Format("INSERT [Student] (registration, password, name, email) VALUES('{0}','{1}','{2}','{3}')",
         t.Registration,
         t.Password,
         t.Name,

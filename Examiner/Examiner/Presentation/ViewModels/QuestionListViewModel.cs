@@ -1,70 +1,24 @@
 ﻿namespace Examiner.Presentation.ViewModels
 {
-  using System.Collections.ObjectModel;
-  using Examiner.Business;
   using Examiner.Business.Models;
-  using GalaSoft.MvvmLight.Command;
-  using System.Windows.Input;
   using Examiner.Presentation.Views;
+  using System.Windows;
 
-  public class QuestionListViewModel : ViewModelBase
+  public class QuestionListViewModel : ListViewModel<Question>
   {
     public QuestionListViewModel()
-      : base(@"Questions")
     {
-      this.Questions = new ObservableCollection<Question>();
-      this.RefreshList();
+      this.DisplayName = "Questions";
     }
 
-    private void RefreshList()
+    protected override Window InsertWindow
     {
-      this.Questions.Clear();
-      foreach (Question question in ExaminerFacade.Instance.GetAll<Question>())
-      {
-        this.Questions.Add(question);
-      }
+      get { return new QuestionWindow(); }
     }
 
-    public ObservableCollection<Question> Questions { get; private set; }
-
-    public ICommand Insert
+    protected override Window UpdateWindow
     {
-      get
-      {
-        return new RelayCommand(() =>
-        {
-          var w = new QuestionWindow();
-          w.ShowDialog();
-          this.RefreshList();
-        });
-      }
+      get { return new QuestionWindow(this.Selected); }
     }
-
-    public ICommand Update
-    {
-      get
-      {
-        return new RelayCommand(() =>
-        {
-          var w = new QuestionWindow(this.SelectedQuestion);
-          w.ShowDialog();
-          this.RefreshList();
-        }, () => { return this.SelectedQuestion != null; });
-      }
-    }
-
-    public ICommand Delete
-    {
-      get
-      {
-        return new RelayCommand(() =>
-        {
-          ExaminerFacade.Instance.Delete(this.SelectedQuestion);
-          this.RefreshList();
-        }, () => { return this.SelectedQuestion != null; });
-      }
-    }
-
-    public Question SelectedQuestion { get; set; }
   }
 }

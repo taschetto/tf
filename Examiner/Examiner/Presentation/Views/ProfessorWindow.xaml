@@ -14,7 +14,10 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:QuestionListViewModel}">
       <vw:QuestionListView />
-    </DataTemplate>    
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:StudentListViewModel}">
+      <vw:StudentListView />
+    </DataTemplate>
   </Window.Resources>
   <Grid Margin="10">
     <TabControl SelectedIndex="0" ItemsSource="{Binding ViewModelCollection}" DisplayMemberPath="DisplayName"/>

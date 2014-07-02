@@ -1,11 +1,7 @@
 ﻿namespace Examiner.Presentation.ViewModels
 {
-  using System;
-  using System.Collections.Generic;
+  using GalaSoft.MvvmLight;
   using System.Collections.ObjectModel;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
 
   public class ProfessorViewModel : ViewModelBase
   {
@@ -24,8 +20,9 @@
         {
           this.viewModelCollection = new ObservableCollection<ViewModelBase>();
           this.viewModelCollection.Add(new ExamListViewModel());
-          this.viewModelCollection.Add(new CategoryListViewModel());
           this.viewModelCollection.Add(new QuestionListViewModel());
+          this.viewModelCollection.Add(new CategoryListViewModel());
+          this.viewModelCollection.Add(new StudentListViewModel());
         }
 
         return this.viewModelCollection;

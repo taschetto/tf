@@ -2,25 +2,21 @@
 {
   using Examiner.Business;
   using Examiner.Business.Models;
-  using GalaSoft.MvvmLight.Command;
   using System.Collections.ObjectModel;
-  using System.Windows;
-  using System.Windows.Input;
 
-  public class ExamViewModel : ViewModelBase
+  public class ExamViewModel : ModelViewModel<Exam>
   {
-    private int id = 0;
     private int questionCount = 0;
     private bool open = true;
     private string accessCode = string.Empty;
+
     private ObservableCollection<CheckListItem<Category>> categories;
-    private bool isUpdate = false;
 
     public ExamViewModel(Exam exam = null)
     {
+      this.IsUpdate = exam != null;
+      
       this.categories = new ObservableCollection<CheckListItem<Category>>();
-      this.IsUpdate = false;
-
       foreach (var category in ExaminerFacade.Instance.GetAll<Category>())
       {
         var item = new CheckListItem<Category>(category, category.Name, false);
@@ -29,11 +25,10 @@
 
       if (exam != null)
       { 
-        this.id = exam.Id;
-        this.questionCount = exam.QuestionCount;
-        this.open = exam.Open;
-        this.accessCode = exam.AccessCode;
-        this.IsUpdate = true;
+        this.Id = exam.Id;
+        this.QuestionCount = exam.QuestionCount;
+        this.Open = exam.Open;
+        this.AccessCode = exam.AccessCode;
 
         // Melhorar esta lógica.
         foreach (var category in exam.Categories)
@@ -44,32 +39,6 @@
               item.IsChecked = true;
           }
         }
-      }
-    }
-
-    public bool IsUpdate
-    {
-      get
-      {
-        return this.isUpdate;
-      }
-
-      set
-      {
-        Set<bool>("IsUpdate", ref this.isUpdate, value);
-      }
-    }
-    
-    public int Id 
-    { 
-      get
-      {
-        return this.id;
-      }
-
-      set
-      {
-        Set<int>("Id", ref this.id, value);
       }
     }
 
@@ -120,27 +89,19 @@
       }
     }
 
-    public ICommand Save
+    public override Exam Model
     {
       get
       {
-        return new RelayCommand<Window>((w) =>
+        Exam exam = new Exam(this.Id, this.QuestionCount, this.Open, this.AccessCode);
+
+        foreach (var item in this.categories)
         {
-          Exam exam = new Exam(this.Id, this.QuestionCount, this.Open, this.AccessCode);
+          if (item.IsChecked)
+            exam.AddCategory(item.Model);
+        }
 
-          foreach (var item in this.categories)
-          {
-            if (item.IsChecked)
-              exam.AddCategory(item.Model);
-          }
-          
-          if (this.IsUpdate)
-            ExaminerFacade.Instance.Update(exam);
-          else
-            ExaminerFacade.Instance.Add(exam);
-
-          w.Close();
-        });
+        return exam;
       }
     }
   }

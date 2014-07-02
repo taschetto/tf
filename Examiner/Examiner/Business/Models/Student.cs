@@ -4,9 +4,9 @@
 
   public class Student : BaseModel
   {
-    private List<StudentExam> _studentExams;
+    private List<StudentExam> studentExams;
 
-    public Student(int id, string registration, string password, string name, string email) : base(id)
+    public Student(int id, int registration, string password, string name, string email) : base(id)
     {
       this.Registration = registration;
       this.Password = password;
@@ -14,7 +14,7 @@
       this.Email = email;
     }
 
-    public string Registration { get; private set; }
+    public int Registration { get; set; }
 
     public string Password { get; set; }
 
@@ -26,8 +26,8 @@
     { 
       get
       {
-        this._studentExams = this._studentExams ?? new List<StudentExam>();
-        return this._studentExams;
+        this.studentExams = this.studentExams ?? new List<StudentExam>();
+        return this.studentExams;
       }
     }
 

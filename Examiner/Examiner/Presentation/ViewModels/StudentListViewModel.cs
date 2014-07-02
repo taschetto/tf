@@ -3,22 +3,22 @@
   using Examiner.Business.Models;
   using Examiner.Presentation.Views;
 
-  public class ExamListViewModel : ListViewModel<Exam>
+  public class StudentListViewModel : ListViewModel<Student>
   {
 
-    public ExamListViewModel()
+    public StudentListViewModel()
     {
-      this.DisplayName = "Exams";
+      this.DisplayName = "Students";
     }
 
     protected override System.Windows.Window InsertWindow
     {
-      get { return new ExamWindow(); }
+      get { return new StudentWindow(); }
     }
 
     protected override System.Windows.Window UpdateWindow
     {
-      get { return new ExamWindow(this.Selected); }
+      get { return new StudentWindow(this.Selected); }
     }
   }
 }

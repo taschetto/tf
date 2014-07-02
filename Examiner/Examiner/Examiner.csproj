@@ -114,13 +114,14 @@
     <Compile Include="Presentation\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ExamListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ExamViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\ListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\Operation.cs" />
+    <Compile Include="Presentation\ViewModels\ModelViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ProfessorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
-    <Compile Include="Presentation\ViewModels\ViewModelBase.cs" />
-    <Compile Include="Presentation\ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Presentation\ViewModels\StudentListViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\StudentViewModel.cs" />
     <Page Include="Presentation\Views\CategoryListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +183,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\Views\StudentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\StudentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DAOs\IExamDAO.cs" />
@@ -198,6 +207,12 @@
     </Compile>
     <Compile Include="Presentation\Views\QuestionWindow.xaml.cs">
       <DependentUpon>QuestionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\StudentListView.xaml.cs">
+      <DependentUpon>StudentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\StudentWindow.xaml.cs">
+      <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

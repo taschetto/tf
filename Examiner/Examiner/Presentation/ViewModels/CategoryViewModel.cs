@@ -6,49 +6,20 @@
   using System.Windows;
   using System.Windows.Input;
 
-  public class CategoryViewModel : ViewModelBase
+  public class CategoryViewModel : ModelViewModel<Category>
   {
-    private int id;
     private string name;
     private string description;
-    private bool isUpdate = false;
 
     public CategoryViewModel(Category category = null)
     {
-      this.IsUpdate = false;
+      this.IsUpdate = category != null;
 
       if (category != null)
       {
-        this.id = category.Id;
-        this.name = category.Name;
-        this.description = category.Description;
-        this.IsUpdate = true;
-      }
-    }
-
-    public bool IsUpdate
-    {
-      get
-      {
-        return this.isUpdate;
-      }
-
-      set
-      {
-        Set<bool>("IsUpdate", ref this.isUpdate, value);
-      }
-    }
-
-    public int Id
-    {
-      get
-      {
-        return this.id;
-      }
-
-      set
-      {
-        Set<int>("Id", ref this.id, value);
+        this.Id = category.Id;
+        this.Name = category.Name;
+        this.Description = category.Description;
       }
     }
 
@@ -78,21 +49,11 @@
       }
     }
 
-    public ICommand Save
+    public override Category Model
     {
       get
       {
-        return new RelayCommand<Window>((w) =>
-        {
-          Category category = new Category(this.Id, this.Name, this.Description);
-
-          if (this.IsUpdate)
-            ExaminerFacade.Instance.Update(category);
-          else
-            ExaminerFacade.Instance.Add(category);
-
-          w.Close();
-        });
+        return new Category(this.Id, this.Name, this.Description);
       }
     }
   }

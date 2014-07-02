@@ -35,6 +35,9 @@
         case @"Question":
           return QuestionDB.Instance.GetAll() as List<T>;
 
+        case @"Student":
+          return StudentDB.Instance.GetAll() as List<T>;
+
         default:
           throw new InvalidOperationException();
       }
@@ -52,6 +55,9 @@
 
       case @"Question":
         return QuestionDB.Instance.Add(t as Question);
+
+      case @"Student":
+        return StudentDB.Instance.Add(t as Student);
 
       default:
         throw new InvalidOperationException();
@@ -71,6 +77,9 @@
       case @"Question":
         return QuestionDB.Instance.Update(t as Question);
 
+      case @"Student":
+        return StudentDB.Instance.Update(t as Student);
+
       default:
         throw new InvalidOperationException();
       }
@@ -87,6 +96,9 @@
 
       case @"Question":
         return QuestionDB.Instance.Delete(t as Question);
+
+      case @"Student":
+        return StudentDB.Instance.Delete(t as Student);
 
       default:
         throw new InvalidOperationException();

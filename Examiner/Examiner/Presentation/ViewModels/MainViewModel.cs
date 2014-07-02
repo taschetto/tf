@@ -1,10 +1,11 @@
-using System;
-using System.Windows.Input;
-using Examiner.Presentation.Views;
-using GalaSoft.MvvmLight.Command;
-
 namespace Examiner.Presentation.ViewModels
 {
+  using Examiner.Presentation.Views;
+  using GalaSoft.MvvmLight;
+  using GalaSoft.MvvmLight.Command;
+  using System;
+  using System.Windows.Input;
+
   public class MainViewModel : ViewModelBase
   {
     private RelayCommand openProfessor;

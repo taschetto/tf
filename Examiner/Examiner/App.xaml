@@ -7,9 +7,4 @@
   d1p1:Ignorable="d"
   xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:vm="clr-namespace:Examiner.Presentation.ViewModels">
-  <Application.Resources>
-    <vm:ViewModelLocator
-      x:Key="Locator" 
-      d:IsDataSource="True" />
-  </Application.Resources>
 </Application>
