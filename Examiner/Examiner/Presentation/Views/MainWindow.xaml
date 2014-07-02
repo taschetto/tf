@@ -5,16 +5,17 @@
   <Grid>
     <DockPanel>
       <Menu DockPanel.Dock="Top" Width="Auto" Height="21">
-        <MenuItem Header="_Opções">
-          <MenuItem Header="_Contexto">
-            <MenuItem Header="_Professor" Command="{Binding OpenProfessor}"/>
-            <MenuItem Header="_Aluno" />
-            <MenuItem Header="_Administrador" />
+        <MenuItem Header="Options">
+          <MenuItem Header="_Professor" Command="{Binding OpenProfessor}" />
+          <MenuItem Header="Student">
+            <MenuItem Header="_New Exam" Command="{Binding NewExam}"/>
+            <MenuItem Header="_My Exams" Command="{Binding MyExams}"/>
           </MenuItem>
+          <MenuItem Header="_Admin" />
           <Separator/>
-          <MenuItem Header="_Sair"/>
+          <MenuItem Header="_Exit"/>
         </MenuItem>
-        <MenuItem Header="_Sobre" />
+        <MenuItem Header="_About" />
       </Menu>
       <StackPanel></StackPanel>
     </DockPanel>
