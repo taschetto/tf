@@ -64,10 +64,7 @@
       if (!ret)
         return false;
 
-      if (t.Categories.Count > 0)
-        return this.SetCategories(t);
-
-      return true;
+      return this.SetCategories(t);
     }
 
     private bool SetCategories(Question t)
@@ -108,10 +105,7 @@
       if (!ret)
         return false;
 
-      if (t.Categories.Count > 0)
-        return this.SetCategories(t);
-
-      return true;
+      return this.SetCategories(t);
     }
 
     public bool Delete(Question t)

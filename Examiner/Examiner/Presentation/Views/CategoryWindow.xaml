@@ -5,10 +5,10 @@
   <Grid>
     <Label Content="Id:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox IsEnabled="False" Height="23" Margin="115,10,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
-    <Label Content="Nome:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label Content="Name:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox Height="23" Margin="115,38,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
-    <Label Content="Descrição:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label Content="Description:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox Margin="115,66,10,34" TextWrapping="Wrap" Text="{Binding Description}"/>
-    <Button Command="{Binding Save, Mode=OneWay}" CommandParameter="{Binding ElementName=Category}" Content="Salvar" Margin="0,0,10,9" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
+    <Button Command="{Binding Save, Mode=OneWay}" CommandParameter="{Binding ElementName=Category}" Content="Save" Margin="0,0,10,9" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
   </Grid>
 </Window>

@@ -26,7 +26,7 @@
 
     public ObservableCollection<Exam> Exams { get; private set; }
 
-    public ICommand Create
+    public ICommand Insert
     {
       get
       {

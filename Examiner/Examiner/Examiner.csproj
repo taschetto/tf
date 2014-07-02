@@ -174,10 +174,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Views\QuestionCategoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Presentation\Views\QuestionListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,9 +192,6 @@
     <Compile Include="Persistence\QuestionDB.cs" />
     <Compile Include="Presentation\Views\ProfessorWindow.xaml.cs">
       <DependentUpon>ProfessorWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\Views\QuestionCategoryView.xaml.cs">
-      <DependentUpon>QuestionCategoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\QuestionListView.xaml.cs">
       <DependentUpon>QuestionListView.xaml</DependentUpon>

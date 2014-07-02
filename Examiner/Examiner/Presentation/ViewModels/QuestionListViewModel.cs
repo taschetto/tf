@@ -27,7 +27,7 @@
 
     public ObservableCollection<Question> Questions { get; private set; }
 
-    public ICommand Create
+    public ICommand Insert
     {
       get
       {

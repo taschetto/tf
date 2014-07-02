@@ -27,7 +27,7 @@
 
     public ObservableCollection<Category> Categories { get; private set; }
 
-    public ICommand Create
+    public ICommand Insert
     {
       get
       {

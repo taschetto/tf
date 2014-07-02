@@ -47,10 +47,7 @@
       if (!ret)
         return false;
 
-      if (t.Categories.Count > 0)
-        return this.SetCategories(t);
-
-      return true;
+      return this.SetCategories(t);
     }
 
     private bool SetCategories(Exam t)
@@ -83,10 +80,7 @@
       if (!ret)
         return false;
 
-      if (t.Categories.Count > 0)
-        return this.SetCategories(t);
-
-      return true;
+      return this.SetCategories(t);
     }
 
     public bool Delete(Exam t)
