@@ -252,6 +252,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>supernova.mdf</DependentUpon>
     </Content>
+    <Content Include="Persistence\Scripts\DML.sql" />
     <Content Include="Persistence\Scripts\DDL.sql" />
   </ItemGroup>
   <ItemGroup>
