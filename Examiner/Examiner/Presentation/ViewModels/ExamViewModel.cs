@@ -9,17 +9,17 @@
 
   public class ExamViewModel : ViewModelBase
   {
-    private bool isNew = true;
-
     private int id = 0;
     private int questionCount = 0;
     private bool open = true;
     private string accessCode = string.Empty;
     private ObservableCollection<CheckListItem<Category>> categories;
+    private bool isUpdate = false;
 
     public ExamViewModel(Exam exam = null)
     {
       this.categories = new ObservableCollection<CheckListItem<Category>>();
+      this.IsUpdate = false;
 
       foreach (var category in ExaminerFacade.Instance.GetAll<Category>())
       {
@@ -33,7 +33,7 @@
         this.questionCount = exam.QuestionCount;
         this.open = exam.Open;
         this.accessCode = exam.AccessCode;
-        this.isNew = false;
+        this.IsUpdate = true;
 
         // Melhorar esta lógica.
         foreach (var category in exam.Categories)
@@ -44,6 +44,19 @@
               item.IsChecked = true;
           }
         }
+      }
+    }
+
+    public bool IsUpdate
+    {
+      get
+      {
+        return this.isUpdate;
+      }
+
+      set
+      {
+        Set<bool>("IsUpdate", ref this.isUpdate, value);
       }
     }
     
@@ -121,10 +134,10 @@
               exam.AddCategory(item.Model);
           }
           
-          if (this.isNew)
-            ExaminerFacade.Instance.Add(exam);
-          else
+          if (this.IsUpdate)
             ExaminerFacade.Instance.Update(exam);
+          else
+            ExaminerFacade.Instance.Add(exam);
 
           w.Close();
         });

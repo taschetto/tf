@@ -42,12 +42,7 @@
         t.Open ? 1 : 0,
         t.AccessCode);
 
-      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
-
-      if (!ret)
-        return false;
-
-      return this.SetCategories(t);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     private bool SetCategories(Exam t)

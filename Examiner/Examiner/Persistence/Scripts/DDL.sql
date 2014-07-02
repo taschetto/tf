@@ -12,8 +12,8 @@ CREATE TABLE Exam (
 );
 
 CREATE TABLE CategoryExam (
-  id_category INTEGER NOT NULL REFERENCES Category,
-  id_exam INTEGER NOT NULL REFERENCES Exam,
+  id_category INTEGER NOT NULL REFERENCES Category ON DELETE CASCADE,
+  id_exam INTEGER NOT NULL REFERENCES Exam ON DELETE CASCADE,
   PRIMARY KEY (id_category, id_exam)
 );
 
@@ -30,8 +30,8 @@ CREATE TABLE Question (
 );
 
 CREATE TABLE CategoryQuestion (
-  id_category INTEGER NOT NULL REFERENCES Category,
-  id_question INTEGER NOT NULL REFERENCES Question,
+  id_category INTEGER NOT NULL REFERENCES Category  ON DELETE CASCADE,
+  id_question INTEGER NOT NULL REFERENCES Question  ON DELETE CASCADE,
   PRIMARY KEY (id_category, id_question)
 );
 
@@ -45,14 +45,14 @@ CREATE TABLE Student (
 
 CREATE TABLE StudentExam (
   id INTEGER PRIMARY KEY IDENTITY,
-  id_student INTEGER NOT NULL REFERENCES Student,
-  id_exam INTEGER NOT NULL REFERENCES Exam,
+  id_student INTEGER NOT NULL REFERENCES Student ON DELETE CASCADE,
+  id_exam INTEGER NOT NULL REFERENCES Exam ON DELETE CASCADE,
   UNIQUE ("id_student", "id_exam")
 );
 
 CREATE TABLE Answer (
   id INTEGER PRIMARY KEY IDENTITY,
-  id_question INTEGER NOT NULL REFERENCES Question,
-  id_studentexam INTEGER NOT NULL REFERENCES StudentExam,
+  id_question INTEGER NOT NULL REFERENCES Question ON DELETE CASCADE,
+  id_studentexam INTEGER NOT NULL REFERENCES StudentExam ON DELETE CASCADE,
   alternative INTEGER NOT NULL
 );

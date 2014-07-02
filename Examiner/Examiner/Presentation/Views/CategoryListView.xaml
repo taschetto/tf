@@ -6,8 +6,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-    <DataGrid ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" IsReadOnly="True" Margin="10,10,10,37"/>
-        <Button Command="{Binding Insert}" Content="Insert" HorizontalAlignment="Right" Margin="0,0,170,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
+    <DataGrid ItemsSource="{Binding Categories}"
+              SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" 
+              IsReadOnly="True" 
+              Margin="10,10,10,37"
+              AutoGenerateColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Id" Width="35" Binding="{Binding Id}" />
+        <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Name}" />
+        <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}" />
+      </DataGrid.Columns>
+    </DataGrid>
+    <Button Command="{Binding Insert}" Content="Insert" HorizontalAlignment="Right" Margin="0,0,170,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
         <Button Command="{Binding Update}" Content="Update" HorizontalAlignment="Right" Margin="0,0,90,10" Width="75" Height="22" VerticalAlignment="Bottom"/>
         <Button Command="{Binding Delete}" Content="Delete" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom"/>
     </Grid>

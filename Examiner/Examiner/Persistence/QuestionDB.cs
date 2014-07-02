@@ -59,12 +59,7 @@
         t.Alternatives[4],
         t.RightAlternative);
 
-      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
-
-      if (!ret)
-        return false;
-
-      return this.SetCategories(t);
+      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
     }
 
     private bool SetCategories(Question t)

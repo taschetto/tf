@@ -8,20 +8,34 @@
 
   public class CategoryViewModel : ViewModelBase
   {
-    private bool isNew = true;
-
     private int id;
     private string name;
     private string description;
+    private bool isUpdate = false;
 
     public CategoryViewModel(Category category = null)
     {
+      this.IsUpdate = false;
+
       if (category != null)
       {
         this.id = category.Id;
         this.name = category.Name;
         this.description = category.Description;
-        this.isNew = false;
+        this.IsUpdate = true;
+      }
+    }
+
+    public bool IsUpdate
+    {
+      get
+      {
+        return this.isUpdate;
+      }
+
+      set
+      {
+        Set<bool>("IsUpdate", ref this.isUpdate, value);
       }
     }
 
@@ -71,10 +85,11 @@
         return new RelayCommand<Window>((w) =>
         {
           Category category = new Category(this.Id, this.Name, this.Description);
-          if (this.isNew)
-            ExaminerFacade.Instance.Add(category);
-          else
+
+          if (this.IsUpdate)
             ExaminerFacade.Instance.Update(category);
+          else
+            ExaminerFacade.Instance.Add(category);
 
           w.Close();
         });
