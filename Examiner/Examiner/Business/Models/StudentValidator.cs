@@ -41,9 +41,9 @@
             return true;
         }
 
-        public bool ValidRegistration(String reg)
+        public bool ValidRegistration(int reg)
         {
-            if (string.IsNullOrEmpty(reg))
+            if (reg < 0)
             {
                 return false;
             }
