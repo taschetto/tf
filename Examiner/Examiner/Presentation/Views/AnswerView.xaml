@@ -5,22 +5,115 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" d:DesignWidth="400" Height="354">
   <Grid>
-    <Label Content="Id:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <Label Height="23" Margin="115,10,0,0" Content="{Binding Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
-    <Label Content="Question:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <Label Height="48" Margin="115,38,10,0" Content="{Binding QuestionContent}" VerticalAlignment="Top"/>
-    <GroupBox Header="Alternatives:" Margin="10,91,10,0" Height="170" VerticalAlignment="Top">
+    <Label Content="Id:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+    <Label Height="23" Margin="115,8,0,0" Content="{Binding Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
+    <Label Content="Question:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+    <Label Height="48" Margin="115,36,10,0" Content="{Binding QuestionContent}" VerticalAlignment="Top"/>
+    <GroupBox Header="Alternatives:" Margin="10,91,10,0" Height="170" VerticalAlignment="Top" FontWeight="Bold">
       <Grid Height="155" VerticalAlignment="Top">
-        <RadioButton IsChecked="{Binding RightAlternative1}" Content="{Binding Alternative1}" HorizontalAlignment="Left" Margin="17,16,0,0" VerticalAlignment="Top" Width="341"/>
-        <RadioButton IsChecked="{Binding RightAlternative2}" Content="{Binding Alternative2}" HorizontalAlignment="Left" Margin="17,44,0,0" VerticalAlignment="Top" Width="341"/>
-        <RadioButton IsChecked="{Binding RightAlternative3}" Content="{Binding Alternative3}" HorizontalAlignment="Left" Margin="17,72,0,0" VerticalAlignment="Top" Width="341"/>
-        <RadioButton IsChecked="{Binding RightAlternative4}" Content="{Binding Alternative4}" HorizontalAlignment="Left" Margin="17,100,0,0" VerticalAlignment="Top" Width="341"/>
-        <RadioButton IsChecked="{Binding RightAlternative5}" Content="{Binding Alternative5}" HorizontalAlignment="Left" Margin="17,128,0,0" VerticalAlignment="Top" Width="341"/>
+        <RadioButton IsChecked="{Binding Checked1, Mode=OneWayToSource}"  Content="{Binding Alternative1}" HorizontalAlignment="Left" Margin="17,16,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
+          <RadioButton.Style>
+            <Style TargetType="RadioButton">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Status1}" Value="0">
+                  <Setter Property="Foreground" Value="#FF000000"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status1}" Value="1">
+                  <Setter Property="Foreground" Value="#FFDE575D"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status1}" Value="2">
+                  <Setter Property="Foreground" Value="#FF57DE5D"/>
+                </DataTrigger>                
+              </Style.Triggers>
+            </Style>
+          </RadioButton.Style>
+        </RadioButton>
+        <RadioButton IsChecked="{Binding Checked2, Mode=OneWayToSource}" Content="{Binding Alternative2}" HorizontalAlignment="Left" Margin="17,44,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
+          <RadioButton.Style>
+            <Style TargetType="RadioButton">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Status2}" Value="0">
+                  <Setter Property="Foreground" Value="#FF000000"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status2}" Value="1">
+                  <Setter Property="Foreground" Value="#FFDE575D"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status2}" Value="2">
+                  <Setter Property="Foreground" Value="#FF57DE5D"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </RadioButton.Style>
+        </RadioButton>
+        <RadioButton IsChecked="{Binding Checked3, Mode=OneWayToSource}" Content="{Binding Alternative3}" HorizontalAlignment="Left" Margin="17,72,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
+          <RadioButton.Style>
+            <Style TargetType="RadioButton">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Status3}" Value="0">
+                  <Setter Property="Foreground" Value="#FF000000"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status3}" Value="1">
+                  <Setter Property="Foreground" Value="#FFDE575D"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status3}" Value="2">
+                  <Setter Property="Foreground" Value="#FF57DE5D"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </RadioButton.Style>
+        </RadioButton>
+        <RadioButton IsChecked="{Binding Checked4, Mode=OneWayToSource}" Content="{Binding Alternative4}" HorizontalAlignment="Left" Margin="17,100,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
+          <RadioButton.Style>
+            <Style TargetType="RadioButton">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Status4}" Value="0">
+                  <Setter Property="Foreground" Value="#FF000000"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status4}" Value="1">
+                  <Setter Property="Foreground" Value="#FFDE575D"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status4}" Value="2">
+                  <Setter Property="Foreground" Value="#FF57DE5D"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </RadioButton.Style>
+        </RadioButton>
+        <RadioButton IsChecked="{Binding Checked5, Mode=OneWayToSource}" Content="{Binding Alternative5}" HorizontalAlignment="Left" Margin="17,128,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
+          <RadioButton.Style>
+            <Style TargetType="RadioButton">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Status5}" Value="0">
+                  <Setter Property="Foreground" Value="#FF000000"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status5}" Value="1">
+                  <Setter Property="Foreground" Value="#FFDE575D"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status5}" Value="2">
+                  <Setter Property="Foreground" Value="#FF57DE5D"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </RadioButton.Style>
+        </RadioButton>
       </Grid>
     </GroupBox>
-    <Label Content="Feedback:" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label Content="Feedback:" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
     <Label Height="48" Margin="115,266,10,0" Content="{Binding FeedbackContent}" VerticalAlignment="Top"/>
-    <Button Content="Save" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
-    <Button Content="Next" Margin="0,0,90,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
+    <Button Command="{Binding SaveAnswer}" Content="Save Answer" Margin="0,0,90,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
+    <Button Command="{Binding Next}" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75">
+      <Button.Style>
+        <Style TargetType="Button">
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding HasNext}" Value="True">
+              <Setter Property="Content" Value="Next"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding HasNext}" Value="False">
+              <Setter Property="Content" Value="Finish"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </Button.Style>
+    </Button>
   </Grid>
 </UserControl>

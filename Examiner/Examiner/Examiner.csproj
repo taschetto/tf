@@ -109,6 +109,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>supernova.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ViewModels\AnswerViewModel.cs" />
     <Compile Include="Presentation\ViewModels\CheckListItem.cs" />
     <Compile Include="Presentation\ViewModels\CategoryListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\CategoryViewModel.cs" />

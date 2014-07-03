@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Examiner.Presentation.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Examiner.Presentation.Views
   {
     public AnswerView()
     {
-      InitializeComponent();
+      this.InitializeComponent();
     }
   }
 }

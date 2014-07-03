@@ -1,28 +1,37 @@
-﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Examiner.Presentation.ViewModels
+﻿namespace Examiner.Presentation.ViewModels
 {
-  public class NewExamMainViewModel
-  {
-    private ObservableCollection<ViewModelBase> viewModelCollection;
+  using Examiner.Business;
+  using Examiner.Business.Models;
+  using GalaSoft.MvvmLight;
+  using GalaSoft.MvvmLight.Command;
+  using System.Collections.ObjectModel;
+  using System.Windows.Input;
 
-    public ObservableCollection<ViewModelBase> ViewModelCollection
+  public class NewExamMainViewModel : ViewModelBase
+  {
+    private ViewModelBase currentViewModel;
+
+    public NewExamMainViewModel()
+    {
+      this.CurrentViewModel = new NewExamViewModel(this);
+    }
+
+    public void BeginExam(Student student, Exam exam)
+    {
+      var viewModel = new AnswerViewModel(ExaminerFacade.Instance.CreateNewExam(student, exam));
+      this.CurrentViewModel = viewModel;
+    }
+
+    public ViewModelBase CurrentViewModel
     {
       get
       {
-        if (this.viewModelCollection == null)
-        {
-          this.viewModelCollection = new ObservableCollection<ViewModelBase>();
-          this.viewModelCollection.Add(new NewExamViewModel());
-        }
+        return this.currentViewModel;
+      }
 
-        return this.viewModelCollection;
+      set
+      {
+        Set<ViewModelBase>("CurrentViewModel", ref this.currentViewModel, value);
       }
     }
   }

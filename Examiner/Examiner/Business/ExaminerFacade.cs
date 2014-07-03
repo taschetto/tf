@@ -23,6 +23,28 @@
       }
     }
 
+    public T GetById<T>(int id)
+      where T : BaseModel
+    {
+      switch (typeof(T).Name)
+      {
+      case @"Exam":
+        return ExamDB.Instance.GetById(id) as T;
+
+      case @"Category":
+        return CategoryDB.Instance.GetById(id) as T;
+
+      case @"Question":
+        return QuestionDB.Instance.GetById(id) as T;
+
+      case @"Student":
+        return StudentDB.Instance.GetById(id) as T;
+
+      default:
+        throw new InvalidOperationException();
+      }
+    }
+
     public List<T> GetAll<T>()
     {
       switch (typeof(T).Name)
@@ -107,10 +129,8 @@
       }
     }
 
-    public StudentExam CreateNewExam(int studentId, int examId)
+    public StudentExam CreateNewExam(Student student, Exam exam)
     {
-      var student = StudentDB.Instance.GetById(studentId);
-      var exam = ExamDB.Instance.GetById(examId);
       var questions = new List<Question>();
 
       foreach (var category in exam.Categories)

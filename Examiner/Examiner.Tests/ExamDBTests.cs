@@ -61,7 +61,6 @@
     [Test]
     public void X()
     {
-      var se = ExaminerFacade.Instance.CreateNewExam(3, 15);
     }
   }
 }

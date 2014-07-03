@@ -9,7 +9,7 @@ namespace Examiner.Presentation.ViewModels
   public class MainViewModel : ViewModelBase
   {
     private RelayCommand openProfessor;
-    private RelayCommand openStudent;
+    private RelayCommand newExam;
     private RelayCommand openAdmin;
 
     public MainViewModel()
@@ -28,13 +28,14 @@ namespace Examiner.Presentation.ViewModels
       }
     }
 
-    public ICommand OpenStudent
+    public ICommand NewExam
     {
       get
       {
-        return this.openStudent ?? (this.openStudent = new RelayCommand(() =>
+        return this.newExam ?? (this.newExam = new RelayCommand(() =>
         {
-          throw new NotImplementedException();
+          var w = new NewExamWindow();
+          w.ShowDialog();
         }));
       }
     }
