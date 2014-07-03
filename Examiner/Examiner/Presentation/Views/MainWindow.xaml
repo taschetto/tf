@@ -6,7 +6,7 @@
   <Grid>
     <DockPanel>
       <Menu DockPanel.Dock="Top" Width="Auto" Height="21">
-        <MenuItem Header="_Options" Click="MenuItem_Click">
+        <MenuItem Header="_Options">
           <MenuItem Header="_Professor" Command="{Binding OpenProfessor}" />
           <MenuItem Header="_Student">
             <MenuItem Header="_New Exam" Command="{Binding NewExam}"/>
@@ -14,7 +14,7 @@
           </MenuItem>
           <MenuItem Header="_Admin" />
           <Separator/>
-          <MenuItem Header="_Exit"/>
+          <MenuItem Header="_Exit" Click="MenuItem_Click"/>
         </MenuItem>
         <MenuItem Header="_About" Command="{Binding About}"/>
       </Menu>

@@ -8,11 +8,6 @@ namespace Examiner.Presentation.ViewModels
 
   public class MainViewModel : ViewModelBase
   {
-    private RelayCommand openProfessor;
-    private RelayCommand newExam;
-    private RelayCommand exams;
-    private RelayCommand about;
-
     public MainViewModel()
     {
     }
@@ -21,11 +16,11 @@ namespace Examiner.Presentation.ViewModels
     { 
       get
       {
-        return this.openProfessor ?? (this.openProfessor = new RelayCommand(() =>
+        return new RelayCommand(() =>
         {
           var w = new ProfessorWindow();
           w.ShowDialog();
-        }));
+        });
       }
     }
 
@@ -33,11 +28,11 @@ namespace Examiner.Presentation.ViewModels
     {
       get
       {
-        return this.newExam ?? (this.newExam = new RelayCommand(() =>
+        return new RelayCommand(() =>
         {
           var w = new NewExamWindow();
           w.ShowDialog();
-        }));
+        });
       }
     }
 
@@ -45,11 +40,11 @@ namespace Examiner.Presentation.ViewModels
     {
       get
       {
-        return this.exams ?? (this.exams = new RelayCommand(() =>
+        return new RelayCommand(() =>
         {
           var w = new StudentExamListWindow();
           w.ShowDialog();
-        }));
+        });
       }
     }
 
@@ -57,11 +52,11 @@ namespace Examiner.Presentation.ViewModels
     {
       get
       {
-        return this.about ?? (this.about = new RelayCommand(() =>
+        return new RelayCommand(() =>
         {
           var w = new AboutWindow();
           w.ShowDialog();
-        }));
+        });
       }
     }
   }
