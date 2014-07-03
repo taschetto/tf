@@ -100,7 +100,12 @@
     <Compile Include="Business\DAOs\IStudentDAO.cs" />
     <Compile Include="Business\DAOs\IStudentExamDAO.cs" />
     <Compile Include="Business\Exceptions\DAOException.cs" />
-    <Compile Include="Business\Models\Validator.cs" />
+    <Compile Include="Business\Exceptions\ExaminerException.cs" />
+    <Compile Include="Business\Models\AnswerValidator.cs" />
+    <Compile Include="Business\Models\ExamValidator.cs" />
+    <Compile Include="Business\Models\StudentValidator.cs" />
+    <Compile Include="Business\Models\CategoryValidator.cs" />
+    <Compile Include="Business\Models\QuestionValidator.cs" />
     <Compile Include="Persistence\AnswerDB.cs" />
     <Compile Include="Persistence\ConnectionDB.cs" />
     <Compile Include="Persistence\StudentDB.cs" />
