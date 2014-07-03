@@ -1,12 +1,13 @@
 ﻿namespace Examiner.Presentation.ViewModels
 {
-  using GalaSoft.MvvmLight;
-  using Examiner.Business.Models;
+  using System;
   using System.Collections.Generic;
   using System.Windows.Input;
-  using GalaSoft.MvvmLight.Command;
-using System.Windows.Media;
+  using System.Windows.Media;
   using Examiner.Business;
+  using Examiner.Business.Models;
+  using GalaSoft.MvvmLight;
+  using GalaSoft.MvvmLight.Command;
 
   public class AnswerViewModel : ViewModelBase
   {
@@ -65,19 +66,19 @@ using System.Windows.Media;
     {
       if (this.Alternative == this.rightAlternative)
       {
-        this.Color1 = this.Alternative == AlternativesEnum.A ? Brushes.Green : Brushes.Black;
-        this.Color2 = this.Alternative == AlternativesEnum.B ? Brushes.Green : Brushes.Black;
-        this.Color3 = this.Alternative == AlternativesEnum.C ? Brushes.Green : Brushes.Black;
-        this.Color4 = this.Alternative == AlternativesEnum.D ? Brushes.Green : Brushes.Black;
-        this.Color5 = this.Alternative == AlternativesEnum.E ? Brushes.Green : Brushes.Black;
+        this.Color1 = this.Alternative == AlternativesEnum.A ? Brushes.ForestGreen : Brushes.Black;
+        this.Color2 = this.Alternative == AlternativesEnum.B ? Brushes.ForestGreen : Brushes.Black;
+        this.Color3 = this.Alternative == AlternativesEnum.C ? Brushes.ForestGreen : Brushes.Black;
+        this.Color4 = this.Alternative == AlternativesEnum.D ? Brushes.ForestGreen : Brushes.Black;
+        this.Color5 = this.Alternative == AlternativesEnum.E ? Brushes.ForestGreen : Brushes.Black;
       }
       else
       {
-        this.Color1 = this.rightAlternative == AlternativesEnum.A ? Brushes.Green : (this.Alternative == AlternativesEnum.A ? Brushes.Red : Brushes.Black);
-        this.Color2 = this.rightAlternative == AlternativesEnum.B ? Brushes.Green : (this.Alternative == AlternativesEnum.B ? Brushes.Red : Brushes.Black);
-        this.Color3 = this.rightAlternative == AlternativesEnum.C ? Brushes.Green : (this.Alternative == AlternativesEnum.C ? Brushes.Red : Brushes.Black);
-        this.Color4 = this.rightAlternative == AlternativesEnum.D ? Brushes.Green : (this.Alternative == AlternativesEnum.D ? Brushes.Red : Brushes.Black);
-        this.Color5 = this.rightAlternative == AlternativesEnum.E ? Brushes.Green : (this.Alternative == AlternativesEnum.E ? Brushes.Red : Brushes.Black);
+        this.Color1 = this.rightAlternative == AlternativesEnum.A ? Brushes.ForestGreen : (this.Alternative == AlternativesEnum.A ? Brushes.Crimson : Brushes.Black);
+        this.Color2 = this.rightAlternative == AlternativesEnum.B ? Brushes.ForestGreen : (this.Alternative == AlternativesEnum.B ? Brushes.Crimson : Brushes.Black);
+        this.Color3 = this.rightAlternative == AlternativesEnum.C ? Brushes.ForestGreen : (this.Alternative == AlternativesEnum.C ? Brushes.Crimson : Brushes.Black);
+        this.Color4 = this.rightAlternative == AlternativesEnum.D ? Brushes.ForestGreen : (this.Alternative == AlternativesEnum.D ? Brushes.Crimson : Brushes.Black);
+        this.Color5 = this.rightAlternative == AlternativesEnum.E ? Brushes.ForestGreen : (this.Alternative == AlternativesEnum.E ? Brushes.Crimson : Brushes.Black);
       }
     }
 
@@ -93,6 +94,8 @@ using System.Windows.Media;
       this.Alternative5 = question.Alternatives[4];
       this.rightAlternative = (AlternativesEnum)question.RightAlternative;
     }
+
+    public Action CloseAction { get; set; }
 
     public bool HasNext
     {
@@ -277,6 +280,7 @@ using System.Windows.Media;
     private void Save()
     {
       ExaminerFacade.Instance.Add(this.studentExam);
+      this.CloseAction();
     }
 
     public ICommand Next

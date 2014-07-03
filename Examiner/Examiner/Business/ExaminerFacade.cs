@@ -40,6 +40,9 @@
       case @"Student":
         return StudentDB.Instance.GetById(id) as T;
 
+      case @"StudentExam":
+        return StudentExamDB.Instance.GetById(id) as T;
+
       default:
         throw new InvalidOperationException();
       }
@@ -60,6 +63,9 @@
 
         case @"Student":
           return StudentDB.Instance.GetAll() as List<T>;
+
+        case @"StudentExam":
+          return StudentExamDB.Instance.GetAll() as List<T>;
 
         default:
           throw new InvalidOperationException();
@@ -82,6 +88,9 @@
       case @"Student":
         return StudentDB.Instance.Add(t as Student);
 
+      case @"StudentExam":
+        return StudentExamDB.Instance.Add(t as StudentExam);
+
       default:
         throw new InvalidOperationException();
       }
@@ -103,6 +112,9 @@
       case @"Student":
         return StudentDB.Instance.Update(t as Student);
 
+      case @"StudentExam":
+        return StudentExamDB.Instance.Update(t as StudentExam);
+
       default:
         throw new InvalidOperationException();
       }
@@ -123,6 +135,9 @@
 
       case @"Student":
         return StudentDB.Instance.Delete(t as Student);
+
+      case @"StudentExam":
+        return StudentExamDB.Instance.Delete(t as StudentExam);
 
       default:
         throw new InvalidOperationException();

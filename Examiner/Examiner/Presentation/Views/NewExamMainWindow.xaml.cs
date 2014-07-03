@@ -11,7 +11,9 @@
     public NewExamWindow()
     {
       this.InitializeComponent();
-      this.DataContext = new NewExamMainViewModel();
+      var viewModel = new NewExamMainViewModel();
+      viewModel.CloseAction = () => { this.Close(); };
+      this.DataContext = viewModel;
     }
   }
 }

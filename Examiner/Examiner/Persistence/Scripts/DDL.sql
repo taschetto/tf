@@ -1,4 +1,13 @@
-﻿CREATE TABLE Category (
+﻿DROP TABLE Answer;
+DROP TABLE StudentExam;
+DROP TABLE Student;
+DROP TABLE CategoryQuestion;
+DROP TABLE Question;
+DROP TABLE CategoryExam;
+DROP TABLE Exam;
+DROP TABLE Category;
+
+CREATE TABLE Category (
   id INTEGER PRIMARY KEY IDENTITY,
   name VARCHAR(200) NOT NULL,
   descript VARCHAR(200) NOT NULL
@@ -8,7 +17,7 @@ CREATE TABLE Exam (
   id INTEGER PRIMARY KEY IDENTITY,
   questionCount INTEGER NOT NULL,
   [open] char(1) NOT NULL,
-  accessCode VARCHAR(10)
+  accessCode VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE CategoryExam (
@@ -46,8 +55,7 @@ CREATE TABLE Student (
 CREATE TABLE StudentExam (
   id INTEGER PRIMARY KEY IDENTITY,
   id_student INTEGER NOT NULL REFERENCES Student ON DELETE CASCADE,
-  id_exam INTEGER NOT NULL REFERENCES Exam ON DELETE CASCADE,
-  UNIQUE ("id_student", "id_exam")
+  id_exam INTEGER NOT NULL REFERENCES Exam ON DELETE CASCADE
 );
 
 CREATE TABLE Answer (

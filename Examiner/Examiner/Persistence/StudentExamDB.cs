@@ -38,7 +38,30 @@
         t.Student.Id,
         t.Exam.Id);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      sql = "SELECT MAX(id) from [StudentExam]";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        t.Id = (int)row[0];
+      }
+
+      return SetAnswers(t);
+    }
+
+    private bool SetAnswers(StudentExam t)
+    {
+      foreach (var answer in t.Answers)
+      {
+        AnswerDB.Instance.Add(answer);
+      }
+
+      return true;
     }
 
     public bool Update(StudentExam t)

@@ -1,11 +1,9 @@
 ﻿namespace Examiner.Presentation.ViewModels
 {
+  using System;
   using Examiner.Business;
   using Examiner.Business.Models;
   using GalaSoft.MvvmLight;
-  using GalaSoft.MvvmLight.Command;
-  using System.Collections.ObjectModel;
-  using System.Windows.Input;
 
   public class NewExamMainViewModel : ViewModelBase
   {
@@ -19,6 +17,7 @@
     public void BeginExam(Student student, Exam exam)
     {
       var viewModel = new AnswerViewModel(ExaminerFacade.Instance.CreateNewExam(student, exam));
+      viewModel.CloseAction = this.CloseAction;
       this.CurrentViewModel = viewModel;
     }
 
@@ -34,5 +33,7 @@
         Set<ViewModelBase>("CurrentViewModel", ref this.currentViewModel, value);
       }
     }
+
+    public Action CloseAction { get; set; }
   }
 }
