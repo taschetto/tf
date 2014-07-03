@@ -59,7 +59,20 @@
         t.Alternatives[4],
         t.RightAlternative);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      sql = "SELECT MAX(id) from [Question]";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        t.Id = (int)row[0];
+      }
+
+      return SetCategories(t);
     }
 
     private bool SetCategories(Question t)
@@ -135,6 +148,20 @@
       }
 
       return null;
+    }
+
+    public List<Question> GetByCategory(Category category)
+    {
+      var questions = new List<Question>();
+      string sql = string.Format("select * from [Question] INNER JOIN [CategoryQuestion] ON [Question].id = [CategoryQuestion].id_question WHERE [CategoryQuestion].id_category = {0}", category.Id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        questions.Add(ToQuestion(row));
+      }
+
+      return questions;
     }
   }
 }

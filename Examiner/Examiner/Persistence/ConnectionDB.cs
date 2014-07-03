@@ -29,7 +29,9 @@ namespace Examiner.Persistence
     {
       get
       {
-        return new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Persistence\DB\supernova.mdf;Integrated Security=True");
+        return new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Guilherme\Documents\GitHub\tf\Examiner\Examiner\bin\Debug\Persistence\DB\supernova.mdf;Integrated Security=True");
+        
+        //return new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Persistence\DB\supernova.mdf;Integrated Security=True");
       }
     }
 

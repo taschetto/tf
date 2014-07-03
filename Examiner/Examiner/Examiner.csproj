@@ -118,11 +118,17 @@
     <Compile Include="Presentation\ViewModels\ListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\MainViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ModelViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\NewExamMainViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\NewExamViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ProfessorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
     <Compile Include="Presentation\ViewModels\StudentListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\StudentViewModel.cs" />
+    <Page Include="Presentation\Views\AnswerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\CategoryListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +162,9 @@
     <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="Presentation\ControlGUI.cs" />
     <Compile Include="Business\DAOs\ICategoryDAO.cs" />
+    <Compile Include="Presentation\Views\AnswerView.xaml.cs">
+      <DependentUpon>AnswerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\CategoryListView.xaml.cs">
       <DependentUpon>CategoryListView.xaml</DependentUpon>
     </Compile>
@@ -172,6 +181,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Presentation\Views\NewExamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\NewExamMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\ProfessorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +217,12 @@
     <Compile Include="Persistence\CategoryDB.cs" />
     <Compile Include="Persistence\ExamDB.cs" />
     <Compile Include="Persistence\QuestionDB.cs" />
+    <Compile Include="Presentation\Views\NewExamView.xaml.cs">
+      <DependentUpon>NewExamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\NewExamMainWindow.xaml.cs">
+      <DependentUpon>NewExamMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\ProfessorWindow.xaml.cs">
       <DependentUpon>ProfessorWindow.xaml</DependentUpon>
     </Compile>

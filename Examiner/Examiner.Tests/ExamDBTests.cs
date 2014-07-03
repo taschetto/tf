@@ -4,6 +4,7 @@
   using Examiner.Business.Models;
   using Examiner.Persistence;
   using NUnit.Framework;
+  using Examiner.Business;
 
   [TestFixture]
   public class ExamDBTests
@@ -55,6 +56,12 @@
         Exam exam2 = ExamDB.Instance.GetById(exam1.Id);
         Assert.AreEqual(true, exam1.Equals(exam2));
       }
+    }
+
+    [Test]
+    public void X()
+    {
+      var se = ExaminerFacade.Instance.CreateNewExam(3, 15);
     }
   }
 }

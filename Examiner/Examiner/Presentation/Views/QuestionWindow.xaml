@@ -25,7 +25,7 @@
     <Label Content="Feedback:" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox Height="48" Margin="115,266,10,0" TextWrapping="Wrap" Text="{Binding FeedbackContent}" VerticalAlignment="Top"/>
     <Label Content="Categories:" HorizontalAlignment="Left" Margin="41,319,0,0" VerticalAlignment="Top"/>
-    <ListBox IsEnabled="{Binding IsUpdate}" ItemsSource="{Binding Categories}" Margin="115,319,10,35">
+    <ListBox ItemsSource="{Binding Categories}" Margin="115,319,10,35">
       <ListBox.ItemTemplate>
         <HierarchicalDataTemplate>
           <CheckBox Content="{Binding Content}" IsChecked="{Binding IsChecked}"/>
