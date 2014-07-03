@@ -13,5 +13,10 @@
       this.InitializeComponent();
       this.DataContext = new MainViewModel();
     }
+
+    private void MenuItem_Click(object sender, RoutedEventArgs e)
+    {
+      this.Close();
+    }
   }
 }
