@@ -3,99 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Examiner.Presentation.ViewModels"
              mc:Ignorable="d" d:DesignWidth="400" Height="354">
   <Grid>
+    <Grid.Resources>
+      <vm:EnumBooleanConverter x:Key="enumToBooleanConverter"/>
+    </Grid.Resources>
     <Label Content="Id:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
     <Label Height="23" Margin="115,8,0,0" Content="{Binding Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
     <Label Content="Question:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
     <Label Height="48" Margin="115,36,10,0" Content="{Binding QuestionContent}" VerticalAlignment="Top"/>
     <GroupBox Header="Alternatives:" Margin="10,91,10,0" Height="170" VerticalAlignment="Top" FontWeight="Bold">
       <Grid Height="155" VerticalAlignment="Top">
-        <RadioButton IsChecked="{Binding Checked1, Mode=OneWayToSource}"  Content="{Binding Alternative1}" HorizontalAlignment="Left" Margin="17,16,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
-          <RadioButton.Style>
-            <Style TargetType="RadioButton">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding Status1}" Value="0">
-                  <Setter Property="Foreground" Value="#FF000000"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status1}" Value="1">
-                  <Setter Property="Foreground" Value="#FFDE575D"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status1}" Value="2">
-                  <Setter Property="Foreground" Value="#FF57DE5D"/>
-                </DataTrigger>                
-              </Style.Triggers>
-            </Style>
-          </RadioButton.Style>
-        </RadioButton>
-        <RadioButton IsChecked="{Binding Checked2, Mode=OneWayToSource}" Content="{Binding Alternative2}" HorizontalAlignment="Left" Margin="17,44,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
-          <RadioButton.Style>
-            <Style TargetType="RadioButton">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding Status2}" Value="0">
-                  <Setter Property="Foreground" Value="#FF000000"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status2}" Value="1">
-                  <Setter Property="Foreground" Value="#FFDE575D"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status2}" Value="2">
-                  <Setter Property="Foreground" Value="#FF57DE5D"/>
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>
-          </RadioButton.Style>
-        </RadioButton>
-        <RadioButton IsChecked="{Binding Checked3, Mode=OneWayToSource}" Content="{Binding Alternative3}" HorizontalAlignment="Left" Margin="17,72,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
-          <RadioButton.Style>
-            <Style TargetType="RadioButton">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding Status3}" Value="0">
-                  <Setter Property="Foreground" Value="#FF000000"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status3}" Value="1">
-                  <Setter Property="Foreground" Value="#FFDE575D"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status3}" Value="2">
-                  <Setter Property="Foreground" Value="#FF57DE5D"/>
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>
-          </RadioButton.Style>
-        </RadioButton>
-        <RadioButton IsChecked="{Binding Checked4, Mode=OneWayToSource}" Content="{Binding Alternative4}" HorizontalAlignment="Left" Margin="17,100,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
-          <RadioButton.Style>
-            <Style TargetType="RadioButton">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding Status4}" Value="0">
-                  <Setter Property="Foreground" Value="#FF000000"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status4}" Value="1">
-                  <Setter Property="Foreground" Value="#FFDE575D"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status4}" Value="2">
-                  <Setter Property="Foreground" Value="#FF57DE5D"/>
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>
-          </RadioButton.Style>
-        </RadioButton>
-        <RadioButton IsChecked="{Binding Checked5, Mode=OneWayToSource}" Content="{Binding Alternative5}" HorizontalAlignment="Left" Margin="17,128,0,0" VerticalAlignment="Top" Width="341" FontWeight="Normal">
-          <RadioButton.Style>
-            <Style TargetType="RadioButton">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding Status5}" Value="0">
-                  <Setter Property="Foreground" Value="#FF000000"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status5}" Value="1">
-                  <Setter Property="Foreground" Value="#FFDE575D"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status5}" Value="2">
-                  <Setter Property="Foreground" Value="#FF57DE5D"/>
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>
-          </RadioButton.Style>
-        </RadioButton>
+        <RadioButton IsChecked="{Binding Path=Alternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=A, Mode=TwoWay}" Content="{Binding Alternative1}" Foreground="{Binding Color1}" HorizontalAlignment="Left" Margin="17,16,0,0" VerticalAlignment="Top" Width="341"/>
+        <RadioButton IsChecked="{Binding Path=Alternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=B, Mode=TwoWay}" Content="{Binding Alternative2}" Foreground="{Binding Color2}" HorizontalAlignment="Left" Margin="17,44,0,0" VerticalAlignment="Top" Width="341"/>
+        <RadioButton IsChecked="{Binding Path=Alternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=C, Mode=TwoWay}" Content="{Binding Alternative3}" Foreground="{Binding Color3}" HorizontalAlignment="Left" Margin="17,72,0,0" VerticalAlignment="Top" Width="341"/>
+        <RadioButton IsChecked="{Binding Path=Alternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=D, Mode=TwoWay}" Content="{Binding Alternative4}" Foreground="{Binding Color4}" HorizontalAlignment="Left" Margin="17,100,0,0" VerticalAlignment="Top" Width="341"/>
+        <RadioButton IsChecked="{Binding Path=Alternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=E, Mode=TwoWay}" Content="{Binding Alternative5}" Foreground="{Binding Color5}" HorizontalAlignment="Left" Margin="17,128,0,0" VerticalAlignment="Top" Width="341"/>
       </Grid>
     </GroupBox>
     <Label Content="Feedback:" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>

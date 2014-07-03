@@ -115,10 +115,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>supernova.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ViewModels\AlternativesEnum.cs" />
     <Compile Include="Presentation\ViewModels\AnswerViewModel.cs" />
     <Compile Include="Presentation\ViewModels\CheckListItem.cs" />
     <Compile Include="Presentation\ViewModels\CategoryListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\EnumBooleanConverter.cs" />
     <Compile Include="Presentation\ViewModels\ExamListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ExamViewModel.cs" />
     <Compile Include="Presentation\ViewModels\ListViewModel.cs" />

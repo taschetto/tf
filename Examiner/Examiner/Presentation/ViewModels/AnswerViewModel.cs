@@ -5,6 +5,8 @@
   using System.Collections.Generic;
   using System.Windows.Input;
   using GalaSoft.MvvmLight.Command;
+using System.Windows.Media;
+  using Examiner.Business;
 
   public class AnswerViewModel : ViewModelBase
   {
@@ -19,19 +21,14 @@
     private string questionContent;
     private string feedbackContent;
     private string[] alternatives;
-    private int rightAlternative;
+    private AlternativesEnum rightAlternative;
+    private AlternativesEnum alternative;
 
-    private int status1;
-    private int status2;
-    private int status3;
-    private int status4;
-    private int status5;
-
-    private bool checked1;
-    private bool checked2;
-    private bool checked3;
-    private bool checked4;
-    private bool checked5;
+    private Brush color1;
+    private Brush color2;
+    private Brush color3;
+    private Brush color4;
+    private Brush color5;
 
     public AnswerViewModel(StudentExam studentExam)
     {
@@ -47,10 +44,40 @@
       {
         this.currentAnswer = enumerator.Current;
         this.SetQuestion(this.currentAnswer.Question);
+        this.Alternative = AlternativesEnum.A;
         this.count++;
         this.isSaved = false;
         this.HasNext = this.count < this.studentExam.Exam.QuestionCount;
-        this.Reset();
+        this.ResetColors();
+      }
+    }
+
+    private void ResetColors()
+    {
+      this.Color1 = Brushes.Black;
+      this.Color2 = Brushes.Black;
+      this.Color3 = Brushes.Black;
+      this.Color4 = Brushes.Black;
+      this.Color5 = Brushes.Black;
+    }
+
+    private void AnswerColors()
+    {
+      if (this.Alternative == this.rightAlternative)
+      {
+        this.Color1 = this.Alternative == AlternativesEnum.A ? Brushes.Green : Brushes.Black;
+        this.Color2 = this.Alternative == AlternativesEnum.B ? Brushes.Green : Brushes.Black;
+        this.Color3 = this.Alternative == AlternativesEnum.C ? Brushes.Green : Brushes.Black;
+        this.Color4 = this.Alternative == AlternativesEnum.D ? Brushes.Green : Brushes.Black;
+        this.Color5 = this.Alternative == AlternativesEnum.E ? Brushes.Green : Brushes.Black;
+      }
+      else
+      {
+        this.Color1 = this.rightAlternative == AlternativesEnum.A ? Brushes.Green : (this.Alternative == AlternativesEnum.A ? Brushes.Red : Brushes.Black);
+        this.Color2 = this.rightAlternative == AlternativesEnum.B ? Brushes.Green : (this.Alternative == AlternativesEnum.B ? Brushes.Red : Brushes.Black);
+        this.Color3 = this.rightAlternative == AlternativesEnum.C ? Brushes.Green : (this.Alternative == AlternativesEnum.C ? Brushes.Red : Brushes.Black);
+        this.Color4 = this.rightAlternative == AlternativesEnum.D ? Brushes.Green : (this.Alternative == AlternativesEnum.D ? Brushes.Red : Brushes.Black);
+        this.Color5 = this.rightAlternative == AlternativesEnum.E ? Brushes.Green : (this.Alternative == AlternativesEnum.E ? Brushes.Red : Brushes.Black);
       }
     }
 
@@ -64,65 +91,7 @@
       this.Alternative3 = question.Alternatives[2];
       this.Alternative4 = question.Alternatives[3];
       this.Alternative5 = question.Alternatives[4];
-      this.rightAlternative = question.RightAlternative;
-    }
-
-    private void Reset()
-    {
-      this.Status1 = 0;
-      this.Status2 = 0;
-      this.Status3 = 0;
-      this.Status4 = 0;
-      this.Status5 = 0;
-    }
-
-    private void ProcessAnswer()
-    {
-      if (this.rightAlternative == 0)
-      {
-        this.Status1 = 2;
-        this.Status2 = this.Checked2 ? 1 : 0;
-        this.Status3 = this.Checked3 ? 1 : 0;
-        this.Status4 = this.Checked4 ? 1 : 0;
-        this.Status5 = this.Checked5 ? 1 : 0;
-      }
-      else if (this.rightAlternative == 1)
-      {
-        this.Status2 = 2;
-        this.Status1 = this.Checked1 ? 1 : 0;
-        this.Status3 = this.Checked3 ? 1 : 0;
-        this.Status4 = this.Checked4 ? 1 : 0;
-        this.Status5 = this.Checked5 ? 1 : 0;
-      }
-      else if (this.rightAlternative == 2)
-      {
-        this.Status3 = 2;
-        this.Status1 = this.Checked1 ? 1 : 0;
-        this.Status2 = this.Checked2 ? 1 : 0;
-        this.Status4 = this.Checked4 ? 1 : 0;
-        this.Status5 = this.Checked5 ? 1 : 0;
-      }
-      else if (this.rightAlternative == 3)
-      {
-        this.Status4 = 2;
-        this.Status1 = this.Checked1 ? 1 : 0;
-        this.Status2 = this.Checked2 ? 1 : 0;
-        this.Status3 = this.Checked3 ? 1 : 0;
-        this.Status5 = this.Checked5 ? 1 : 0;
-      }
-      else if (this.rightAlternative == 4)
-      {
-        this.Status5 = 2;
-        this.Status1 = this.Checked1 ? 1 : 0;
-        this.Status2 = this.Checked2 ? 1 : 0;
-        this.Status3 = this.Checked3 ? 1 : 0;
-        this.Status4 = this.Checked4 ? 1 : 0;
-      }
-    }
-
-    private bool HasAnswer()
-    {
-      return this.Checked1 || this.Checked2 || this.Checked3 || this.Checked4 || this.Checked5;
+      this.rightAlternative = (AlternativesEnum)question.RightAlternative;
     }
 
     public bool HasNext
@@ -233,120 +202,81 @@
       }
     }
 
-    public int Status1
+    public Brush Color1
     {
       get
       {
-        return this.status1;
+        return this.color1;
       }
       set
       {
-        Set<int>("Status1", ref this.status1, value);
+        Set<Brush>("Color1", ref this.color1, value);
       }
     }
 
-    public int Status2
+    public Brush Color2
     {
       get
       {
-        return this.status2;
+        return this.color2;
       }
       set
       {
-        Set<int>("Status2", ref this.status2, value);
+        Set<Brush>("Color2", ref this.color2, value);
       }
     }
 
-    public int Status3
+    public Brush Color3
     {
       get
       {
-        return this.status3;
+        return this.color3;
       }
       set
       {
-        Set<int>("Status3", ref this.status3, value);
+        Set<Brush>("Color3", ref this.color3, value);
       }
     }
 
-    public int Status4
+    public Brush Color4
     {
       get
       {
-        return this.status4;
+        return this.color4;
       }
       set
       {
-        Set<int>("Status4", ref this.status4, value);
+        Set<Brush>("Color4", ref this.color4, value);
       }
     }
 
-    public int Status5
+    public Brush Color5
     {
       get
       {
-        return this.status5;
+        return this.color5;
       }
       set
       {
-        Set<int>("Status5", ref this.status5, value);
+        Set<Brush>("Color5", ref this.color5, value);
       }
     }
 
-    public bool Checked1
+    public AlternativesEnum Alternative
     {
       get
       {
-        return this.checked1;
+        return this.alternative;
       }
       set
       {
-        Set<bool>("Checked1", ref this.checked1, value);
+        Set<AlternativesEnum>("Alternative", ref this.alternative, value);
       }
     }
-    public bool Checked2
+
+    private void Save()
     {
-      get
-      {
-        return this.checked2;
-      }
-      set
-      {
-        Set<bool>("Checked2", ref this.checked2, value);
-      }
-    }
-    public bool Checked3
-    {
-      get
-      {
-        return this.checked3;
-      }
-      set
-      {
-        Set<bool>("Checked3", ref this.checked3, value);
-      }
-    }
-    public bool Checked4
-    {
-      get
-      {
-        return this.checked4;
-      }
-      set
-      {
-        Set<bool>("Checked4", ref this.checked4, value);
-      }
-    }
-    public bool Checked5
-    {
-      get
-      {
-        return this.checked5;
-      }
-      set
-      {
-        Set<bool>("Checked5", ref this.checked5, value);
-      }
+      ExaminerFacade.Instance.Add(this.studentExam);
     }
 
     public ICommand Next
@@ -355,7 +285,10 @@
       {
         return new RelayCommand(() =>
         {
-          this.NextAnswer();
+          if (this.HasNext)
+            this.NextAnswer();
+          else
+            this.Save();
         }, () => { return this.isSaved; });
       }
     }
@@ -365,9 +298,10 @@
       {
         return new RelayCommand(() =>
         {
-          this.ProcessAnswer();
           this.isSaved = true;
-        }, () => { return !this.isSaved && this.HasAnswer(); });
+          this.AnswerColors();
+          this.enumerator.Current.Alternative = (int)this.Alternative;
+        }, () => { return !this.isSaved; });
       }
     }
   }

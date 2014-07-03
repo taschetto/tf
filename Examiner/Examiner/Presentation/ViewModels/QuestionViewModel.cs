@@ -11,14 +11,8 @@
   {
     private string questionContent;
     private string[] alternatives;
-    private int rightAlternative;
+    private AlternativesEnum rightAlternative;
     private string feedbackContent;
-
-    private bool rightAlternative1 = true;
-    private bool rightAlternative2 = false;
-    private bool rightAlternative3 = false;
-    private bool rightAlternative4 = false;
-    private bool rightAlternative5 = false;
 
     private ObservableCollection<CheckListItem<Category>> categories;
 
@@ -38,14 +32,8 @@
         this.Id = question.Id;
         this.QuestionContent = question.QuestionContent;
         this.alternatives = question.Alternatives;
-        this.RightAlternative = question.RightAlternative;
+        this.RightAlternative = (AlternativesEnum)question.RightAlternative;
         this.FeedbackContent = question.FeedbackContent;
-
-        this.RightAlternative1 = this.rightAlternative == 0;
-        this.RightAlternative2 = this.rightAlternative == 1;
-        this.RightAlternative3 = this.rightAlternative == 2;
-        this.RightAlternative4 = this.rightAlternative == 3;
-        this.RightAlternative5 = this.rightAlternative == 4;
 
         // Melhorar esta lógica.
         foreach (var category in question.Categories)
@@ -60,6 +48,18 @@
       else
       {
         this.alternatives = new string[5];   
+      }
+    }
+
+    public AlternativesEnum RightAlternative 
+    { 
+      get
+      {
+        return this.rightAlternative;
+      }
+      set
+      {
+        Set<AlternativesEnum>("RightAlternative", ref this.rightAlternative, value);
       }
     }
 
@@ -141,94 +141,6 @@
       }
     }
 
-    public int RightAlternative
-    {
-      get
-      {
-        return this.rightAlternative;
-      }
-
-      set
-      {
-        Set<int>("RightAlternative", ref this.rightAlternative, value);
-      }
-    }
-
-    public bool RightAlternative1
-    {
-      get
-      {
-        return this.rightAlternative1;
-      }
-
-      set
-      {
-        Set<bool>("RightAlternative1", ref this.rightAlternative1, value);
-        if (value)
-          this.RightAlternative = 0;
-      }
-    }
-
-    public bool RightAlternative2
-    {
-      get
-      {
-        return this.rightAlternative2;
-      }
-
-      set
-      {
-        Set<bool>("RightAlternative2", ref this.rightAlternative2, value);
-        if (value)
-          this.RightAlternative = 1;
-      }
-    }
-
-    public bool RightAlternative3
-    {
-      get
-      {
-        return this.rightAlternative3;
-      }
-
-      set
-      {
-        Set<bool>("RightAlternative3", ref this.rightAlternative3, value);
-        if (value)
-          this.RightAlternative = 2;
-      }
-    }
-
-    public bool RightAlternative4
-    {
-      get
-      {
-        return this.rightAlternative4;
-      }
-
-      set
-      {
-        Set<bool>("RightAlternative4", ref this.rightAlternative4, value);
-        if (value)
-          this.RightAlternative = 3;
-      }
-    }
-
-    public bool RightAlternative5
-    {
-      get
-      {
-        return this.rightAlternative5;
-      }
-
-      set
-      {
-        Set<bool>("RightAlternative5", ref this.rightAlternative5, value);
-        if (value)
-          this.RightAlternative = 4;
-      }
-    }
-
     public string FeedbackContent
     {
       get
@@ -254,7 +166,7 @@
     {
       get
       {
-        Question question = new Question(this.Id, this.QuestionContent, this.FeedbackContent, this.alternatives, this.RightAlternative);
+        Question question = new Question(this.Id, this.QuestionContent, this.FeedbackContent, this.alternatives, (int)this.RightAlternative);
 
         foreach (var item in this.categories)
         {
