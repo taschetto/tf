@@ -42,16 +42,27 @@
       }
     }
 
+    public virtual bool IsReadonly
+    {
+      get
+      {
+        return false;
+      }
+    }
+
     public ICommand Save
     {
       get
       {
         return new RelayCommand<Window>((w) =>
         {
-          if (this.IsUpdate)
-            ExaminerFacade.Instance.Update(this.Model);
-          else
-            ExaminerFacade.Instance.Add(this.Model);
+          if (!this.IsReadonly)
+          {
+            if (this.IsUpdate)
+              ExaminerFacade.Instance.Update(this.Model);
+            else
+              ExaminerFacade.Instance.Add(this.Model);
+          }
 
           w.Close();
         });

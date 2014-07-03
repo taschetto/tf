@@ -9,7 +9,7 @@
           <MenuItem Header="_Professor" Command="{Binding OpenProfessor}" />
           <MenuItem Header="_Student">
             <MenuItem Header="_New Exam" Command="{Binding NewExam}"/>
-            <MenuItem Header="_Exams" Command="{Binding MyExams}"/>
+            <MenuItem Header="_Exams" Command="{Binding Exams}"/>
           </MenuItem>
           <MenuItem Header="_Admin" />
           <Separator/>

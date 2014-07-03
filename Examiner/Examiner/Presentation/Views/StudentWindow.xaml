@@ -6,13 +6,13 @@
     <Label Content="Id:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox IsEnabled="False" Height="23" Margin="115,10,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
     <Label Content="Name:" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Height="23" Margin="115,38,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+    <TextBox MaxLength="200" Height="23" Margin="115,38,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
     <Label Content="Registration:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Height="23" Margin="115,67,0,0" TextWrapping="Wrap" Text="{Binding Registration}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+    <TextBox Height="23" Margin="115,67,0,0" TextWrapping="Wrap" Text="{Binding Registration}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
     <Label Content="E-mail:" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Height="23" Margin="115,95,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+    <TextBox MaxLength="200" Height="23" Margin="115,95,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
     <Label Content="Password:" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Height="23" Margin="115,123,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+    <TextBox MaxLength="200" Height="23" Margin="115,123,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
     <Button Command="{Binding Save, Mode=OneWay}" CommandParameter="{Binding ElementName=Student}" Content="Save" Margin="0,0,10,9" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
   </Grid>
 </Window>

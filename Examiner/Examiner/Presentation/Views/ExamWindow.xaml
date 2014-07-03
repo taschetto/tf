@@ -10,10 +10,10 @@
     <Label Content="Id:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox IsEnabled="False" Text="{Binding Id}" Height="23" Margin="115,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
     <Label Content="Question Count:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Text="{Binding QuestionCount}" Height="23" Margin="115,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="95"/>
+    <TextBox Text="{Binding QuestionCount}" Height="23" Margin="115,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="95" PreviewTextInput="TextBox_PreviewTextInput"/>
     <CheckBox Content="Open" IsChecked="{Binding Open}" HorizontalAlignment="Left" Margin="115,66,0,0" VerticalAlignment="Top"/>
     <Label Content="Access Code:" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Text="{Binding AccessCode}" Height="23" Margin="115,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125"/>
+    <TextBox MaxLength="200" Text="{Binding AccessCode}" Height="23" Margin="115,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125"/>
     <Label Content="Categories:" HorizontalAlignment="Left" Margin="37,116,0,0" VerticalAlignment="Top"/>
     <ListBox ItemsSource="{Binding Categories}" Margin="115,116,12,35">
       <ListBox.ItemTemplate>

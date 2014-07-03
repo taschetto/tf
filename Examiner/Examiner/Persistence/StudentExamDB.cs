@@ -26,10 +26,14 @@
     {
       Student student = StudentDB.Instance.GetById((int)row["id_student"]);
       Exam exam = ExamDB.Instance.GetById((int)row["id_exam"]);
-      return new StudentExam(
+      StudentExam studentExam = new StudentExam(
         (int)row["id"],
         student,
         exam);
+
+      studentExam.Answers = AnswerDB.Instance.GetByStudentExam(studentExam);
+
+      return studentExam;
     }
 
     public bool Add(StudentExam t)

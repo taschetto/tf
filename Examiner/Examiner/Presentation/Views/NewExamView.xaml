@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="100" Width="627">
+             mc:Ignorable="d" Height="105" Width="627">
   <Grid>
     <Label Content="Exam:" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="70" HorizontalContentAlignment="Right"/>
     <Label Content="Student:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="70" HorizontalContentAlignment="Right"/>
     <TextBox Text="{Binding ExamId}" HorizontalAlignment="Left" Height="23" Margin="85,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.183,-0.13" PreviewTextInput="TextBox_PreviewTextInput"/>
     <TextBox Text="{Binding StudentId}" HorizontalAlignment="Left" Height="23" Margin="85,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" PreviewTextInput="TextBox_PreviewTextInput_1"/>
-    <Button Content="+" HorizontalAlignment="Left" Margin="205,13,0,0" VerticalAlignment="Top" Width="24" Height="23"/>
-    <Button Content="+" HorizontalAlignment="Left" Margin="205,41,0,0" VerticalAlignment="Top" Width="24" Height="23" RenderTransformOrigin="-1.417,0.391"/>
-    <TextBox Text="Student Name" Height="23" Margin="234,14,10,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.183,-0.13"/>
-    <TextBox Text="Exam Description" Height="23" Margin="234,42,10,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.183,-0.13"/>
-    <Button Command="{Binding BeginExam}" Content="Begin Exam" Margin="0,70,10,0" HorizontalAlignment="Right" Width="110" Height="20" VerticalAlignment="Top"/>
+    <TextBox IsEnabled="False" Text="{Binding QuestionCount}" Height="23" Margin="205,14,10,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.183,-0.13"/>
+    <TextBox IsEnabled="False" Text="{Binding StudentName}" Height="23" Margin="205,42,10,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.183,-0.13"/>
+    <Button Command="{Binding BeginExam}" Content="Begin Exam" Margin="0,70,10,0" HorizontalAlignment="Right" Width="110" Height="24" VerticalAlignment="Top"/>
+    <Label IsEnabled="{Binding IsClosed}" Content="AccessCode:" HorizontalAlignment="Left" Margin="281,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.737,0.038" Width="96" HorizontalContentAlignment="Right"/>
+    <TextBox IsEnabled="{Binding IsClosed}" Text="{Binding AccessCode}" HorizontalAlignment="Left" Height="25" Margin="382,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
   </Grid>
 </UserControl>

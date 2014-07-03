@@ -35,6 +35,17 @@
         (int)row["alternative"]);
     }
 
+    private Answer ToAnswer(DataRow row, StudentExam studentExam)
+    {
+      var question = QuestionDB.Instance.GetById((int)row["id_question"]);
+
+      return new Answer(
+        (int)row["id"],
+        studentExam,
+        question,
+        (int)row["alternative"]);
+    }
+
     public bool Add(Answer t)
     {
       string sql = string.Format("INSERT [Answer] (id_question, id_studentexam, alternative) VALUES({0}, {1}, {2})",
@@ -83,6 +94,20 @@
       }
 
       return null;
+    }
+
+    public List<Answer> GetByStudentExam(StudentExam studentExam)
+    {
+      var answers = new List<Answer>();
+      string sql = string.Format("select * from [Answer] WHERE id_studentexam = {0}", studentExam.Id);
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        answers.Add(ToAnswer(row, studentExam));
+      }
+
+      return answers;
     }
   }
 }

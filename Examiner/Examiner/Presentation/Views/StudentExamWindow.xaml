@@ -1,0 +1,27 @@
+﻿<Window x:Class="Examiner.Presentation.Views.StudentExamWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StudentExamWindow" Height="416" Width="553" Name="StudentExam"
+        ResizeMode="NoResize">
+  <Grid>
+    <Label Content="Id:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label  Height="26" Margin="115,6,0,0" Content="{Binding StudentExam.Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
+    <Label Content="Exam Id:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label Height="26" Margin="115,37,0,0" Content="{Binding StudentExam.Exam.Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+    <Label Content="Student:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label Height="26" Margin="115,68,0,0" Content="{Binding StudentExam.Student.Name}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250"/>
+    <Label Content="Result:" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
+    <Label Height="26" Margin="115,99,0,0" Content="{Binding Result}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250"/>
+    <DataGrid ItemsSource="{Binding StudentExam.Answers}" 
+              Margin="10,130,10,10"
+              AutoGenerateColumns="False"
+              IsReadOnly="True">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Id" Width="45" Binding="{Binding Question.Id}" />
+        <DataGridTextColumn Header="Question" Width="*" Binding="{Binding Question.QuestionContent}" />
+        <DataGridTextColumn Header="Answer" Width="70" Binding="{Binding Alternative}" />
+        <DataGridTextColumn Header="Correct Answer" Width="100" Binding="{Binding Question.RightAlternative}" />
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+</Window>

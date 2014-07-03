@@ -11,14 +11,14 @@
     <Label Content="Id:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
     <TextBox IsEnabled="False" Height="23" Margin="115,10,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70"/>
     <Label Content="Question:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Height="48" Margin="115,38,10,0" TextWrapping="Wrap" Text="{Binding QuestionContent}" VerticalAlignment="Top"/>
+    <TextBox MaxLength="200" Height="48" Margin="115,38,10,0" TextWrapping="Wrap" Text="{Binding QuestionContent}" VerticalAlignment="Top"/>
     <GroupBox Header="Alternatives:" Margin="10,91,10,0" Height="170" VerticalAlignment="Top">
       <Grid Height="155" VerticalAlignment="Top">
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Alternative1}" VerticalAlignment="Top" Margin="34,10,10,0"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Alternative2}" VerticalAlignment="Top" Margin="34,38,10,0"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Alternative3}" VerticalAlignment="Top" Margin="34,66,10,0"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Alternative4}" VerticalAlignment="Top" Margin="34,94,10,0"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Alternative5}" VerticalAlignment="Top" Margin="34,122,10,0"/>
+        <TextBox MaxLength="200" Height="23" TextWrapping="Wrap" Text="{Binding Alternative1}" VerticalAlignment="Top" Margin="34,10,10,0"/>
+        <TextBox MaxLength="200" Height="23" TextWrapping="Wrap" Text="{Binding Alternative2}" VerticalAlignment="Top" Margin="34,38,10,0"/>
+        <TextBox MaxLength="200" Height="23" TextWrapping="Wrap" Text="{Binding Alternative3}" VerticalAlignment="Top" Margin="34,66,10,0"/>
+        <TextBox MaxLength="200" Height="23" TextWrapping="Wrap" Text="{Binding Alternative4}" VerticalAlignment="Top" Margin="34,94,10,0"/>
+        <TextBox MaxLength="200" Height="23" TextWrapping="Wrap" Text="{Binding Alternative5}" VerticalAlignment="Top" Margin="34,122,10,0"/>
         <RadioButton IsChecked="{Binding Path=RightAlternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=A}" HorizontalAlignment="Left" Margin="17,16,0,0" VerticalAlignment="Top"/>
         <RadioButton IsChecked="{Binding Path=RightAlternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=B}" HorizontalAlignment="Left" Margin="17,44,0,0" VerticalAlignment="Top"/>
         <RadioButton IsChecked="{Binding Path=RightAlternative, Converter={StaticResource enumToBooleanConverter}, ConverterParameter=C}" HorizontalAlignment="Left" Margin="17,72,0,0" VerticalAlignment="Top"/>
@@ -27,7 +27,7 @@
       </Grid>
     </GroupBox>
     <Label Content="Feedback:" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-1.154" Width="100" HorizontalContentAlignment="Right"/>
-    <TextBox Height="48" Margin="115,266,10,0" TextWrapping="Wrap" Text="{Binding FeedbackContent}" VerticalAlignment="Top"/>
+    <TextBox MaxLength="200" Height="48" Margin="115,266,10,0" TextWrapping="Wrap" Text="{Binding FeedbackContent}" VerticalAlignment="Top"/>
     <Label Content="Categories:" HorizontalAlignment="Left" Margin="41,319,0,0" VerticalAlignment="Top"/>
     <ListBox ItemsSource="{Binding Categories}" Margin="115,319,10,35">
       <ListBox.ItemTemplate>

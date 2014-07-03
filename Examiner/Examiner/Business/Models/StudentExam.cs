@@ -3,7 +3,7 @@
   using System.Collections.Generic;
   public class StudentExam : BaseModel
   {
-    private List<Answer> _answers;
+    private List<Answer> answers;
 
     public StudentExam(int id, Student student, Exam exam) : base(id)
     {
@@ -19,16 +19,12 @@
     {
       get
       {
-        this._answers = this._answers ?? new List<Answer>();
-        return this._answers;
+        this.answers = this.answers ?? new List<Answer>();
+        return this.answers;
       }
-    }
-
-    public void AddAnswer(Answer answer)
-    {
-      if (!this.Answers.Contains(answer))
+      set
       {
-        this.Answers.Add(answer);
+        this.answers = value;
       }
     }
 

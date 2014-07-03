@@ -131,6 +131,8 @@
     <Compile Include="Presentation\ViewModels\ProfessorViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\QuestionViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\StudentExamListViewModel.cs" />
+    <Compile Include="Presentation\ViewModels\StudentExamViewModel.cs" />
     <Compile Include="Presentation\ViewModels\StudentListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\StudentViewModel.cs" />
     <Page Include="Presentation\Views\AnswerView.xaml">
@@ -168,7 +170,6 @@
     <Compile Include="Business\Models\Question.cs" />
     <Compile Include="Business\Models\Student.cs" />
     <Compile Include="Business\Models\StudentExam.cs" />
-    <Compile Include="Presentation\ControlGUI.cs" />
     <Compile Include="Business\DAOs\ICategoryDAO.cs" />
     <Compile Include="Presentation\Views\AnswerView.xaml.cs">
       <DependentUpon>AnswerView.xaml</DependentUpon>
@@ -209,6 +210,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\Views\StudentExamListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Views\StudentExamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\StudentListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,6 +248,12 @@
     </Compile>
     <Compile Include="Presentation\Views\QuestionWindow.xaml.cs">
       <DependentUpon>QuestionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\StudentExamListWindow.xaml.cs">
+      <DependentUpon>StudentExamListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\StudentExamWindow.xaml.cs">
+      <DependentUpon>StudentExamWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Views\StudentListView.xaml.cs">
       <DependentUpon>StudentListView.xaml</DependentUpon>
