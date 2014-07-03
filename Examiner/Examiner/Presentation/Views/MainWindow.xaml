@@ -5,11 +5,11 @@
   <Grid>
     <DockPanel>
       <Menu DockPanel.Dock="Top" Width="Auto" Height="21">
-        <MenuItem Header="Options">
+        <MenuItem Header="_Options">
           <MenuItem Header="_Professor" Command="{Binding OpenProfessor}" />
-          <MenuItem Header="Student">
+          <MenuItem Header="_Student">
             <MenuItem Header="_New Exam" Command="{Binding NewExam}"/>
-            <MenuItem Header="_My Exams" Command="{Binding MyExams}"/>
+            <MenuItem Header="_Exams" Command="{Binding MyExams}"/>
           </MenuItem>
           <MenuItem Header="_Admin" />
           <Separator/>

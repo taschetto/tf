@@ -1,6 +1,7 @@
 ﻿namespace Examiner.Business
 {
   using System;
+  using System.Linq;
   using System.Collections.Generic;
   using Examiner.Persistence;
   using Examiner.Business.Models;
@@ -84,6 +85,7 @@
         throw new InvalidOperationException();
       }
     }
+
     public bool Delete<T>(T t)
     {
       switch (typeof(T).Name)
@@ -103,6 +105,33 @@
       default:
         throw new InvalidOperationException();
       }
+    }
+
+    public StudentExam CreateNewExam(int studentId, int examId)
+    {
+      var student = StudentDB.Instance.GetById(studentId);
+      var exam = ExamDB.Instance.GetById(examId);
+      var questions = new List<Question>();
+
+      foreach (var category in exam.Categories)
+      {
+        var categoryQuestions = QuestionDB.Instance.GetByCategory(category);
+
+        foreach (var question in categoryQuestions)
+        {
+          if (!questions.Contains(question))
+            questions.Add(question);
+        }
+      }
+
+      StudentExam studentExam = new StudentExam(0, student, exam);
+      foreach (var question in questions.OrderBy(x => Guid.NewGuid()).Take(exam.QuestionCount))
+      {
+        var answer = new Answer(0, studentExam, question, 0);
+        studentExam.Answers.Add(answer);
+      }
+
+      return studentExam;
     }
   }
 }

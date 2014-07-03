@@ -5,11 +5,6 @@
 
   public class ProfessorViewModel : ViewModelBase
   {
-
-    public ProfessorViewModel()
-    {
-
-    }
     private ObservableCollection<ViewModelBase> viewModelCollection;
 
     public ObservableCollection<ViewModelBase> ViewModelCollection

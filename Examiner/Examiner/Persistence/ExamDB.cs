@@ -42,7 +42,20 @@
         t.Open ? 1 : 0,
         t.AccessCode);
 
-      return ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+      bool ret = ConnectionDB.Instance.ExecuteNonQuery(sql) > 0;
+
+      if (!ret)
+        return false;
+
+      sql = "SELECT MAX(id) from [Exam]";
+      var dataTable = ConnectionDB.Instance.ExecuteQuery(sql);
+
+      foreach (DataRow row in dataTable.Rows)
+      {
+        t.Id = (int)row[0];
+      }
+
+      return SetCategories(t);
     }
 
     private bool SetCategories(Exam t)
