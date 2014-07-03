@@ -135,6 +135,10 @@
     <Compile Include="Presentation\ViewModels\StudentExamViewModel.cs" />
     <Compile Include="Presentation\ViewModels\StudentListViewModel.cs" />
     <Compile Include="Presentation\ViewModels\StudentViewModel.cs" />
+    <Page Include="Presentation\Views\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Views\AnswerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +175,9 @@
     <Compile Include="Business\Models\Student.cs" />
     <Compile Include="Business\Models\StudentExam.cs" />
     <Compile Include="Business\DAOs\ICategoryDAO.cs" />
+    <Compile Include="Presentation\Views\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Views\AnswerView.xaml.cs">
       <DependentUpon>AnswerView.xaml</DependentUpon>
     </Compile>

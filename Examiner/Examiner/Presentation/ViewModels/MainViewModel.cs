@@ -11,7 +11,7 @@ namespace Examiner.Presentation.ViewModels
     private RelayCommand openProfessor;
     private RelayCommand newExam;
     private RelayCommand exams;
-    private RelayCommand openAdmin;
+    private RelayCommand about;
 
     public MainViewModel()
     {
@@ -53,13 +53,13 @@ namespace Examiner.Presentation.ViewModels
       }
     }
 
-    public ICommand OpenAdmin
+    public ICommand About
     {
       get
       {
-        return this.openAdmin ?? (this.openAdmin = new RelayCommand(() =>
+        return this.about ?? (this.about = new RelayCommand(() =>
         {
-          var w = new StudentExamListWindow();
+          var w = new AboutWindow();
           w.ShowDialog();
         }));
       }
